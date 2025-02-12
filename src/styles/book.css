@@ -1,0 +1,42 @@
+.book-container {
+  perspective: 1500px;
+  transform-style: preserve-3d;
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06),
+    -15px 0 30px -15px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  position: relative;
+}
+
+.page-effect {
+  position: relative;
+  background: linear-gradient(to right, #f7f7f7 0%, white 8%);
+  transform-origin: left center;
+  backface-visibility: hidden;
+}
+
+.page-effect::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 30px;
+  background: linear-gradient(to right, 
+    rgba(0,0,0,0.05) 0%,
+    rgba(0,0,0,0) 100%);
+  pointer-events: none;
+}
+
+.page-effect::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: rgba(0,0,0,0.06);
+  transform: rotateY(90deg);
+  transform-origin: right;
+} 
