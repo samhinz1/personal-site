@@ -7,6 +7,7 @@ const MouseHalo: React.FC = () => {
   const cursorRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-width: 768px)');
     let animationFrameId: number;
 
     const updateDOMElements = () => {
@@ -23,12 +24,31 @@ const MouseHalo: React.FC = () => {
       mousePosition.current = { x: e.clientX, y: e.clientY };
     };
 
-    window.addEventListener('mousemove', updateMousePosition, { passive: true });
-    animationFrameId = requestAnimationFrame(updateDOMElements);
+    // Only add event listeners if we're on desktop
+    if (mediaQuery.matches) {
+      window.addEventListener('mousemove', updateMousePosition, { passive: true });
+      animationFrameId = requestAnimationFrame(updateDOMElements);
+    }
+
+    // Handle window resize / device orientation changes
+    const handleMediaQueryChange = (e: MediaQueryListEvent) => {
+      if (e.matches) {
+        window.addEventListener('mousemove', updateMousePosition, { passive: true });
+        animationFrameId = requestAnimationFrame(updateDOMElements);
+      } else {
+        window.removeEventListener('mousemove', updateMousePosition);
+        cancelAnimationFrame(animationFrameId);
+      }
+    };
+
+    mediaQuery.addEventListener('change', handleMediaQueryChange);
 
     return () => {
       window.removeEventListener('mousemove', updateMousePosition);
-      cancelAnimationFrame(animationFrameId);
+      mediaQuery.removeEventListener('change', handleMediaQueryChange);
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
     };
   }, []);
 
@@ -36,19 +56,21 @@ const MouseHalo: React.FC = () => {
     <>
       <style>
         {`
-          body * {
-            cursor: none !important;
+          @media (min-width: 768px) {
+            body * {
+              cursor: none !important;
+            }
           }
         `}
       </style>
       <div
         ref={haloRef}
-        className="pointer-events-none fixed inset-0 z-[9999]"
+        className="pointer-events-none fixed inset-0 z-[9999] hidden md:block"
         style={{ mixBlendMode: 'multiply' }}
       />
       <motion.div
         ref={cursorRef}
-        className="pointer-events-none fixed z-[10000]"
+        className="pointer-events-none fixed z-[10000] hidden md:block"
         style={{
           width: '12px',
           height: '12px',

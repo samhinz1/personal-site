@@ -10,7 +10,8 @@ const Hero: React.FC = () => {
     "an Aspiring Product Manager",
     "a Tech Enthusiast",
     "a Problem Solver",
-    "a Hat Wearer",
+    "a Tinkerer"
+
   ];
 
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
@@ -25,19 +26,19 @@ const Hero: React.FC = () => {
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center bg-dutch-white relative">
-      <div className="container mx-auto px-6 py-20 text-center">
+      <div className="container mx-auto px-4 sm:px-6 py-12 sm:py-20 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 text-rich-black">
-            Howdy 👋, I'm <span className="text-tomato">Sam!</span>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 text-rich-black">
+            G'day 👋, I'm <span className="text-tomato">Sam!</span>
           </h1>
-          <div className="h-20 flex justify-center items-center">
-            <div className="flex items-center bg-white rounded-full px-6 py-3 shadow-md w-[500px]">
-              <FontAwesomeIcon icon={faSearch} className="text-gray-400 mr-3" />
-              <p className="text-xl md:text-2xl text-rich-black whitespace-nowrap">
+          <div className="h-auto sm:h-20 flex justify-center items-center">
+            <div className="flex items-center bg-white rounded-full px-4 sm:px-6 py-3 shadow-md w-full max-w-[500px] overflow-hidden">
+              <FontAwesomeIcon icon={faSearch} className="text-gray-400 mr-3 flex-shrink-0" />
+              <p className="text-base sm:text-xl md:text-2xl text-rich-black overflow-hidden">
                 I'm&nbsp;
                 <AnimatePresence mode="wait">
                   <motion.span
@@ -55,13 +56,19 @@ const Hero: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex justify-center space-x-4 mt-12">
+          <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 mt-12">
             <a href="#projects" 
-               className="bg-tomato text-dutch-white px-8 py-3 rounded-lg hover:bg-rich-black hover:text-tomato transition-colors font-semibold">
+               className="bg-tomato text-dutch-white px-8 py-3 rounded-lg font-semibold
+               shadow-[0_6px_0_0_#c73122] hover:shadow-[0_3px_0_0_#c73122]
+               active:shadow-[0_0px_0_0_#c73122]
+               transition-all hover:translate-y-[3px] active:translate-y-[6px]">
               View My Work
             </a>
             <a href="#contact"
-               className="border-2 border-rich-black text-rich-black px-8 py-3 rounded-lg hover:bg-rich-black hover:text-dutch-white transition-colors font-semibold">
+               className="bg-dutch-white border-2 border-rich-black text-rich-black px-8 py-3 rounded-lg font-semibold
+               shadow-[0_6px_0_0_#2d2d2a] hover:shadow-[0_3px_0_0_#2d2d2a]
+               active:shadow-[0_0px_0_0_#2d2d2a]
+               transition-all hover:translate-y-[3px] active:translate-y-[6px]">
               Contact Me
             </a>
           </div>
@@ -69,7 +76,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Fixed social media icons in bottom right */}
-      <div className="fixed bottom-8 right-8 flex flex-col space-y-4">
+      <div className="fixed bottom-8 right-8 flex flex-col space-y-4 z-[55]">
         <a href="https://www.linkedin.com/in/samhinz/" target="_blank" rel="noopener noreferrer"
            className="text-rich-black hover:text-tomato transition-colors">
           <FontAwesomeIcon icon={faLinkedin} size="2x" />
