@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import samPhoto from '../static/samphoto.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPhone, faEnvelope, faHouse, faFutbol, faBook, faPassport, faKey, faChevronDown, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+import { faPhone, faEnvelope, faHouse, faFutbol, faBook, faPassport, faKey, faChevronDown, faPaperPlane, faCheckCircle, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import ReactConfetti from 'react-confetti';
 
 interface Section {
   id: string;
@@ -69,11 +70,69 @@ const Bio: React.FC = () => {
   const [activeSection, setActiveSection] = useState<string>('work');
   const [openItem, setOpenItem] = useState<string>('experience');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
     message: ''
   });
+
+  // Add event listener for custom event
+  useEffect(() => {
+    const handleSetActiveSection = (event: CustomEvent) => {
+      setActiveSection(event.detail);
+    };
+
+    window.addEventListener('setActiveSection', handleSetActiveSection as EventListener);
+
+    return () => {
+      window.removeEventListener('setActiveSection', handleSetActiveSection as EventListener);
+    };
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: '32b1771f-fb52-45a5-a30d-140934a99e34',
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          subject: 'New Contact Form Submission',
+        }),
+      });
+
+      if (response.ok) {
+        // Show success state and confetti
+        setIsSuccess(true);
+        setShowConfetti(true);
+        
+        // Hide confetti and reset form after 2.5 seconds
+        setTimeout(() => {
+          setShowConfetti(false);
+          setIsSuccess(false);
+          // Reset form data
+          setFormData({ name: '', email: '', message: '' });
+        }, 2500);
+      } else {
+        throw new Error('Failed to submit form');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('Failed to send message. Please try again later.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const sections: Section[] = [
     {
@@ -129,11 +188,11 @@ const Bio: React.FC = () => {
     },
     {
       id: 'whypm',
-      title: 'Why a PM?',
+      title: 'Why Product?',
       content: (
         <div className="space-y-4">
           <div className="text-lg">
-            My journey to Product Management has been driven by three key realizations:
+            <h2 className="text-1xl font-bold text-rich-black mb-6">My journey to Product Management has been driven by three key realizations:</h2>
             
             <div className="mt-6 space-y-6">
               <div>
@@ -154,6 +213,50 @@ const Bio: React.FC = () => {
                 <h3 className="text-xl font-semibold text-tomato mb-2">User-Centric Problem Solving</h3>
                 <p>
                   I'm passionate about understanding user needs and translating them into solutions. The opportunity to work at the intersection of users, business, and technology - while driving tangible impact - is what draws me to Product Management.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'pmskills',
+      title: 'PM Skills',
+      content: (
+        <div className="space-y-4">
+          <div className="text-lg">
+            <div className="mt-6 space-y-6">
+              <div>
+                <h3 className="text-xl font-semibold text-tomato mb-2">Technical Skills</h3>
+                <p>
+                  Through 6 months of intensive self-study, I've built a foundation in technical skills (Python, JS, HTML, CSS, SQL) and PM practices. I've supplemented formal courses with podcasts, books, and community engagement to develop a well-rounded understanding of product management.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-semibold text-tomato mb-2">Transferrable Skills</h3>
+                <p>
+                  My business & finance background provides valuable transferable skills including:
+                  <ul className="list-disc ml-6 mt-2">
+                    <li>Data-driven decision making & hypothesis testing</li>
+                    <li>Risk management & prioritization</li>
+                    <li>Strategic thinking & stakeholder management</li>
+                    <li>Deep understanding of successful tech products</li>
+                  </ul>
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-semibold text-tomato mb-2">Agile Learner</h3>
+                <p>
+                  Although somewhat cliche, I truly believe I am a fast and adaptive learner. I have demonstrated this in the following ways:<br></br>
+                  <ul className="list-disc ml-6 mt-2 space-y-2">
+                    <li>Rapidly acquired technical skills through self-study in web development</li>
+                    <li>Power/early user of AI tools such as Claude, Cursor, Bolt etc.</li>
+                    <li>Quick adoption of various PM tools including Jira, Linear, Notion, and analytics platforms</li>
+                    <li>Thrived under conditions at Suubee that required me to wear many hats</li>
+                  </ul>
                 </p>
               </div>
             </div>
@@ -283,8 +386,29 @@ const Bio: React.FC = () => {
       title: 'Contact',
       content: (
         <div className="space-y-4">
+          {/* Confetti */}
+          <AnimatePresence>
+            {showConfetti && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="fixed inset-0 z-[102]"
+              >
+                <ReactConfetti
+                  width={window.innerWidth}
+                  height={window.innerHeight}
+                  recycle={false}
+                  numberOfPieces={200}
+                  gravity={0.2}
+                  colors={['#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEEAD']}
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
+
           <div className="flex justify-between items-start">
-            <h3 className="text-4xl font-semibold text-tomato">Lets Chat</h3>
+            <h3 className="text-4xl font-semibold text-tomato">Let's Chat</h3>
             <div className="space-y-2 flex flex-col items-end">
               <div className="flex items-center space-x-3">
                 <span className="text-sm">07 361 393 234</span>
@@ -309,61 +433,103 @@ const Bio: React.FC = () => {
           </div>
 
           <div className="pt-4 border-t border-gray-200">
-            <form onSubmit={(e) => {
-              e.preventDefault();
-              console.log('Form submitted:', formData);
-            }} className="space-y-3">
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label htmlFor="name" className="block text-rich-black text-sm font-medium mb-1">Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-3 py-2 text-sm rounded-lg bg-white border border-gray-200 focus:border-tomato focus:ring-1 focus:ring-tomato/20 outline-none transition-all"
-                    required
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="email" className="block text-rich-black text-sm font-medium mb-1">Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-3 py-2 text-sm rounded-lg bg-white border border-gray-200 focus:border-tomato focus:ring-1 focus:ring-tomato/20 outline-none transition-all"
-                    required
-                  />
-                </div>
-              </div>
-              
-              <div>
-                <label htmlFor="message" className="block text-rich-black text-sm font-medium mb-1">Message</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  rows={3}
-                  className="w-full px-3 py-2 text-sm rounded-lg bg-white border border-gray-200 focus:border-tomato focus:ring-1 focus:ring-tomato/20 outline-none transition-all resize-none"
-                  required
-                ></textarea>
-              </div>
-              
-              <motion.button
-                type="submit"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full bg-tomato text-dutch-white px-4 py-2 text-sm rounded-lg font-medium shadow-sm hover:bg-rich-black transition-colors flex items-center justify-center space-x-2"
-              >
-                <FontAwesomeIcon icon={faPaperPlane} className="w-4 h-4" />
-                <span>Send Message</span>
-              </motion.button>
-            </form>
+            <AnimatePresence mode="wait">
+              {!isSuccess ? (
+                <motion.form
+                  key="form"
+                  onSubmit={handleSubmit}
+                  className="space-y-3"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="grid grid-cols-2 gap-3">
+                    <div>
+                      <label htmlFor="name" className="block text-rich-black text-sm font-medium mb-1">Name</label>
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        className="w-full px-3 py-2 text-sm rounded-lg bg-white border border-gray-200 focus:border-tomato focus:ring-1 focus:ring-tomato/20 outline-none transition-all"
+                        required
+                      />
+                    </div>
+                    
+                    <div>
+                      <label htmlFor="email" className="block text-rich-black text-sm font-medium mb-1">Email</label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        className="w-full px-3 py-2 text-sm rounded-lg bg-white border border-gray-200 focus:border-tomato focus:ring-1 focus:ring-tomato/20 outline-none transition-all"
+                        required
+                      />
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="message" className="block text-rich-black text-sm font-medium mb-1">Message</label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      rows={3}
+                      className="w-full px-3 py-2 text-sm rounded-lg bg-white border border-gray-200 focus:border-tomato focus:ring-1 focus:ring-tomato/20 outline-none transition-all resize-none"
+                      required
+                    ></textarea>
+                  </div>
+                  
+                  <motion.button
+                    type="submit"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    disabled={isLoading}
+                    className="w-full bg-tomato text-dutch-white px-4 py-2 text-sm rounded-lg font-medium shadow-sm hover:bg-rich-black transition-colors flex items-center justify-center space-x-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                  >
+                    {isLoading ? (
+                      <FontAwesomeIcon icon={faSpinner} className="w-4 h-4 animate-spin" />
+                    ) : (
+                      <>
+                        <FontAwesomeIcon icon={faPaperPlane} className="w-4 h-4" />
+                        <span>Send Message</span>
+                      </>
+                    )}
+                  </motion.button>
+                </motion.form>
+              ) : (
+                <motion.div
+                  key="success"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.3 }}
+                  className="py-8 text-center"
+                >
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ type: "spring", duration: 0.5 }}
+                  >
+                    <FontAwesomeIcon 
+                      icon={faCheckCircle} 
+                      className="text-tomato w-16 h-16 mb-4" 
+                    />
+                  </motion.div>
+                  <h3 className="text-2xl font-semibold text-rich-black mb-2">
+                    Message Sent!
+                  </h3>
+                  <p className="text-gray-600">
+                    Thanks for reaching out. I'll get back to you soon!
+                  </p>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
       )

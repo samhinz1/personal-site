@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
@@ -6,20 +7,23 @@ import artwologogreen from '../static/artwologogreen.png';
 
 const caseStudies = [
   {
+    id: 1,
     title: "Artwo Case Study",
     summary: "Complete MVP for a startup idea to power the future humanoid robotics industry",
     tags: ["MVP Build", "User Research", "Roadmap"],
     imageUrl: artwologogreen
   },
   {
+    id: 2,
     title: "Uniqlo Case Study",
     summary: "Complete assessment of Uniqlo's online shopping experience including navigation and user experience.",
     tags: ["User Research", "Data Analysis", "UI/UX Design"],
     imageUrl: "https://cdn.brandfetch.io/idYY8jkUtH/theme/dark/logo.svg?c=1dxbfHSJFAPEGdCLU4o5B"
   },
   {
+    id: 3,
     title: "Kindle Case Study",
-    summary: "Developing a secure and user-friendly mobile banking application",
+    summary: "Developing an AI TTS feature to enable visually impaired users to read Kindle books more naturally.",
     tags: ["Feature Request", "User Research", "Mockup"],
     imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Amazon_Kindle_logo.svg/582px-Amazon_Kindle_logo.svg.png"
   }
@@ -38,12 +42,12 @@ const CaseStudies: React.FC = () => {
         >
           <h2 className="text-5xl font-bold mb-12 text-rich-black">Case <span className="text-tomato">Studies</span></h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {caseStudies.map((study, index) => (
+            {caseStudies.map((study) => (
               <motion.div
-                key={index}
+                key={study.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.5, delay: study.id * 0.1 }}
                 viewport={{ once: true }}
                 whileHover={{ y: -5 }}
                 className="group bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300"
@@ -68,14 +72,15 @@ const CaseStudies: React.FC = () => {
                       </span>
                     ))}
                   </div>
-                  <motion.a
-                    href={`/case-study/${index + 1}`}
-                    className="inline-flex items-center text-tomato hover:text-rich-black transition-colors font-semibold"
-                    whileHover={{ x: 5 }}
-                  >
-                    Read Case Study
-                    <FontAwesomeIcon icon={faArrowRight} className="ml-2" />
-                  </motion.a>
+                  <motion.div whileHover={{ x: 5 }}>
+                    <Link
+                      to={`/case-study/${study.id}`}
+                      className="inline-flex items-center text-tomato hover:text-rich-black transition-colors font-semibold"
+                    >
+                      Read Case Study
+                      <FontAwesomeIcon icon={faArrowRight} className="ml-2" />
+                    </Link>
+                  </motion.div>
                 </div>
               </motion.div>
             ))}

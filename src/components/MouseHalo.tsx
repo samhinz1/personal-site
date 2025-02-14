@@ -65,7 +65,7 @@ const MouseHalo: React.FC = () => {
       </style>
       <div
         ref={haloRef}
-        className="pointer-events-none fixed inset-0 z-[9999] hidden md:block"
+        className="pointer-events-none fixed inset-0 z-[9999] hidden md:block overflow-hidden"
         style={{ mixBlendMode: 'multiply' }}
       />
       <motion.div

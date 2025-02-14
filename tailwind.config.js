@@ -15,6 +15,7 @@ export default {
       },
       animation: {
         'gradient': 'gradient 8s linear infinite',
+        'wave': 'wave 2.5s ease-in-out',
       },
       keyframes: {
         gradient: {
@@ -26,6 +27,16 @@ export default {
             'background-size': '200% 200%',
             'background-position': 'right center'
           },
+        },
+        wave: {
+          '0%': { transform: 'rotate(0.0deg)' },
+          '15%': { transform: 'rotate(20.0deg)' },
+          '30%': { transform: 'rotate(-6.0deg)' },
+          '45%': { transform: 'rotate(15.0deg)' },
+          '60%': { transform: 'rotate(-4.0deg)' },
+          '75%': { transform: 'rotate(10.0deg)' },
+          '85%': { transform: 'rotate(0.0deg)' },
+          '100%': { transform: 'rotate(0.0deg)' },
         },
       },
     },
