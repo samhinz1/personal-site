@@ -11,7 +11,7 @@ export default {
         'dutch-white': '#F2E2BA',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['"Red Hat Display"', 'system-ui', 'sans-serif'],
       },
       animation: {
         'gradient': 'gradient 8s linear infinite',

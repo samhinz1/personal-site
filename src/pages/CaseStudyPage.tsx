@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faArrowRight, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import Footer from '../components/Footer';
 import artwologogreen from '../static/artwologogreen.png';
 
@@ -10,40 +10,47 @@ const caseStudiesData = [
   {
     id: 1,
     title: "Artwo Case Study",
-    summary: "Complete MVP for a startup idea to power the future humanoid robotics industry",
-    tags: ["MVP Build", "User Research", "Roadmap"],
+    summary: "Building a platform to power the future of humanoid robotics through an innovative leasing model",
+    tags: ["MVP Build", "User Research", "Product Strategy", "Market Analysis"],
     imageUrl: artwologogreen,
     fullDescription: `
-      A comprehensive case study on developing an MVP for Artwo, a startup focused on humanoid robotics.
-      This project involved extensive user research, feature prioritization, and roadmap development.
+      In late 2024, I conceptualized Artwo as a response to the emerging opportunities in humanoid robotics. Recent breakthroughs, particularly in AI, have transformed humanoid robots from a distant promise into a commercial reality. Drawing parallels with the early 20th-century car rental business, Artwo aims to make humanoid robots accessible through an innovative leasing model.
+
+      The project involved extensive market research, customer interviews, and strategic planning to develop a solution that addresses the high barriers to entry in humanoid robotics adoption. The result is a three-phase implementation strategy that evolves from a basic leasing platform to a comprehensive C2C marketplace.
     `,
     challenges: [
-      "Identifying core features for MVP",
-      "Balancing technical feasibility with user needs",
-      "Creating a scalable architecture"
+      "High barrier to entry for businesses wanting to adopt humanoid robots",
+      "Complex implementation requirements across different industries",
+      "Need for flexible and scalable rental solutions",
+      "Building trust in an entirely new industry"
     ],
     solutions: [
-      "Conducted user interviews to prioritize features",
-      "Implemented agile development methodology",
-      "Developed modular system architecture"
+      "Developed a phased approach starting with a basic leasing platform",
+      "Created comprehensive customer survey to validate market needs",
+      "Designed MVP focusing on core search, booking, and management features",
+      "Implemented industry-specific targeting strategy"
     ],
     outcomes: [
-      "Successfully launched MVP within 3 months",
-      "Achieved 90% user satisfaction rate",
-      "Secured additional funding for development"
+      "Identified key target industries with highest adoption potential",
+      "Developed clear three-phase growth strategy",
+      "Created detailed MVP specifications for initial platform launch"
     ],
     process: [
       {
-        phase: "Discovery",
-        description: "Conducted market research and user interviews to identify key opportunities and pain points in the robotics industry."
+        phase: "Market Analysis",
+        description: "Conducted extensive research into humanoid robotics industry, identifying parallels with historical business models and analyzing current market barriers."
       },
       {
-        phase: "Planning",
-        description: "Developed comprehensive product roadmap and technical architecture based on research findings."
+        phase: "Customer Research",
+        description: "Developed and executed comprehensive customer survey to understand business needs, pain points, and adoption criteria across various industries."
       },
       {
-        phase: "Development",
-        description: "Implemented core features using agile methodology, with regular user feedback and iterations."
+        phase: "Strategy Development",
+        description: "Created three-phase implementation strategy, evolving from basic leasing to a C2C marketplace, with clear focus on reducing barriers to entry."
+      },
+      {
+        phase: "MVP Planning",
+        description: "Defined core features and functionality required for initial platform launch, organized into three main epics: Search Experience, Booking System, and Booking Management."
       }
     ]
   },
@@ -141,6 +148,7 @@ const CaseStudyPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const caseStudy = caseStudiesData.find(study => study.id === Number(id));
+  const [expandedSection, setExpandedSection] = useState('');
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -364,6 +372,15 @@ const CaseStudyPage: React.FC = () => {
                           <li>Reduce clutter and offer multiple browsing options</li>
                         </ul>
                       </div>
+                      <a 
+                        href="https://artwo.atlassian.net/wiki/external/NzRhYzc0ODk0OWQyNDYyY2JjMzQyNTcxMmRiOTc2MzE"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 mt-4 px-6 py-2 bg-tomato/10 text-tomato rounded-lg hover:bg-tomato/20 transition-colors duration-300 font-medium"
+                      >
+                        Epic 1 Product Requirement Document
+                        <FontAwesomeIcon icon={faArrowRight} className="text-sm" />
+                      </a>
                     </div>
                   </div>
 
@@ -386,6 +403,15 @@ const CaseStudyPage: React.FC = () => {
                           <li>Introduce sign-up incentives</li>
                         </ul>
                       </div>
+                      <a 
+                        href="https://artwo.atlassian.net/wiki/external/YTcwZjBiYmU0MjQ5NDc2NmI0YzE0NDNiYmE4YWY4ODc"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 mt-4 px-6 py-2 bg-tomato/10 text-tomato rounded-lg hover:bg-tomato/20 transition-colors duration-300 font-medium"
+                      >
+                        Epic 2 Product Requirement Document
+                        <FontAwesomeIcon icon={faArrowRight} className="text-sm" />
+                      </a>
                     </div>
                   </div>
 
@@ -408,6 +434,268 @@ const CaseStudyPage: React.FC = () => {
                           <li>Highlight current sorting logic</li>
                         </ul>
                       </div>
+                      <a 
+                        href="https://artwo.atlassian.net/wiki/external/M2I2YWVjMWIxMDAyNDVlMjkwMzJiMzAyZmNmYzlhZTY"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 mt-4 px-6 py-2 bg-tomato/10 text-tomato rounded-lg hover:bg-tomato/20 transition-colors duration-300 font-medium"
+                      >
+                        Epic 3 Product Requirement Document
+                        <FontAwesomeIcon icon={faArrowRight} className="text-sm" />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </motion.div>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+
+  // Special rendering for Artwo case study (id: 1)
+  if (caseStudy.id === 1) {
+    return (
+      <div className="min-h-screen bg-dutch-white/20">
+        <main className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="min-h-[30vh] flex flex-col justify-center"
+            >
+              <button
+                onClick={() => navigate('/')}
+                className="flex items-center gap-3 mb-8 pt-4 group"
+              >
+                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-dutch-white group-hover:bg-tomato/10 text-rich-black group-hover:text-tomato transition-all duration-300">
+                  <FontAwesomeIcon icon={faChevronLeft} />
+                </div>
+                <span className="text-rich-black group-hover:text-tomato transition-colors duration-300 font-medium">
+                  Back to Home
+                </span>
+              </button>
+
+              <h1 className="text-6xl font-bold text-rich-black mb-4">{caseStudy.title}</h1>
+              <div className="flex flex-wrap gap-2 mb-4">
+                {caseStudy.tags.map((tag, index) => (
+                  <span
+                    key={index}
+                    className="px-4 py-2 bg-tomato/10 text-tomato rounded-full text-sm font-medium"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="prose prose-lg max-w-none"
+            >
+              <section className="mb-12">
+                <h2 className="text-4xl font-bold mb-6 text-rich-black">Introduction</h2>
+                <p className="text-gray-700 text-lg leading-relaxed">
+                  Artwo was a personal idea of mine, thought up of in late 2024. There was some very early murmurs of the promise that recent breakthroughs in humanoid held, however the leaders in field remained tight lipped around their progress. While I have long believed in their potential, the idea of humanoid robots revolutionizing industries (much like fusion energy and quantum computing) have been promised for over a decade.
+                </p>
+                <p className="text-gray-700 text-lg leading-relaxed mt-4">
+                  However, it's only in the past 12 to 24 months that we've seen breakthroughs (Thanks largely to advancements in AI) of such magnitude that humanoid robots are beginning to show real commercial promise. The use cases are virtually limitless, and once perfected from a utility standpoint, I truly believe we will witness the dawn of a fifth industrial revolution.
+                </p>
+                <p className="text-gray-700 text-lg leading-relaxed mt-4">
+                  Yet, humanoid robots represent entirely uncharted territory. How do we identify—or even preempt—problems that have yet to emerge? The best approach, I believe, is to look at history. The closest comparable industry model I found was the early 20th-century car rental business. The parallels are striking: high upfront capital investment, broad industrial applications, and, most importantly, a pivotal role in shaping an industrial revolution.
+                </p>
+              </section>
+
+              <section className="mb-12">
+                <h2 className="text-4xl font-bold mb-6 text-rich-black">The Problem</h2>
+                <p className="text-gray-700 text-lg leading-relaxed">
+                  While humanoid robots hold immense potential, their widespread adoption faces significant challenges beyond just technical capabilities. The most immediate and pressing issue is the high barrier to entry—these units are expensive and will remain so for the foreseeable future. As a result, only large corporations with deep pockets will be able to justify the return on investment (ROI).
+                </p>
+                
+                <h3 className="text-2xl font-bold mt-8 mb-4 text-rich-black">Key Barriers to Ownership</h3>
+                <ul className="list-disc pl-6 space-y-2 text-gray-700 text-lg">
+                  <li>Temporary & Seasonal Needs – Many businesses require labor solutions for short-term projects, making outright ownership impractical.</li>
+                  <li>Ownership Burdens – Maintenance, insurance, storage, and ongoing operational costs add complexity and financial strain.</li>
+                  <li>Flexibility & Variety – Different tasks demand different robotic capabilities, meaning a single purchase may not fit all use cases.</li>
+                  <li>Corporate & Fleet Solutions – Companies need the ability to scale up or down on demand without the risk of sunk costs.</li>
+                </ul>
+              </section>
+
+              <section className="mb-12">
+                <h2 className="text-4xl font-bold mb-6 text-rich-black">Target Market</h2>
+                <p className="text-gray-700 text-lg leading-relaxed mb-8">
+                  To maximize ROI, our ideal customers share common characteristics that make humanoid robots a game-changer for their operations. These businesses typically operate on thin margins between labor costs and revenue—for example, a cleaning company that charges $50 per hour but pays its workers $30 per hour. In these cases, even a modest reduction in labor costs can have a significant impact on profitability.
+                </p>
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div className="bg-white p-6 rounded-lg shadow-md">
+                    <h3 className="text-2xl font-bold mb-4 text-rich-black">Ideal Business Profile</h3>
+                    <ul className="list-disc pl-6 space-y-2 text-gray-700">
+                      <li>Small to mid-sized businesses</li>
+                      <li>Labor-intensive work</li>
+                      <li>Highly repetitive tasks</li>
+                      <li>High employee turnover</li>
+                      <li>Undesirable job positions</li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-white p-6 rounded-lg shadow-md">
+                    <h3 className="text-2xl font-bold mb-4 text-rich-black">Key Industries</h3>
+                    <ul className="list-disc pl-6 space-y-2 text-gray-700">
+                      <li>Retail & Warehousing</li>
+                      <li>Hospitality & Fast Food</li>
+                      <li>Manufacturing & Production</li>
+                      <li>Logistics & Delivery</li>
+                      <li>Cleaning & Maintenance</li>
+                      <li>Agriculture & Food Processing</li>
+                      <li>Security & Surveillance</li>
+                    </ul>
+                  </div>
+                </div>
+              </section>
+
+              <section className="mb-12">
+                <h2 className="text-4xl font-bold mb-6 text-rich-black">Customer Research</h2>
+                <p className="text-gray-700 text-lg leading-relaxed mb-8">
+                  To validate our assumptions and better understand potential customer needs, we conducted comprehensive interviews with businesses across our target industries. Our research focused on understanding their current operational challenges, workforce issues, and attitudes toward automation.
+                </p>
+                <div className="bg-white p-6 rounded-lg shadow-md">
+                  <div className="border rounded-lg">
+                    <button 
+                      onClick={() => setExpandedSection(expandedSection === 'survey' ? '' : 'survey')}
+                      className="w-full px-6 py-4 flex justify-between items-center hover:bg-gray-50"
+                    >
+                      <h3 className="text-2xl font-bold text-rich-black">Survey Questions</h3>
+                      <FontAwesomeIcon 
+                        icon={faChevronDown} 
+                        className={`transform transition-transform duration-300 ${
+                          expandedSection === 'survey' ? 'rotate-180' : ''
+                        }`}
+                      />
+                    </button>
+                    <div className={`px-6 overflow-hidden transition-all duration-300 ${
+                      expandedSection === 'survey' ? 'max-h-[2000px] py-4' : 'max-h-0'
+                    }`}>
+                      <ul className="list-disc pl-6 space-y-2 text-gray-700">
+                        <li>What is your role in the company?</li>
+                        <li>What does your company do, and what are its core operations?</li>
+                        <li>What are the most labor-intensive tasks in your business?</li>
+                        <li>How does your company handle staffing shortages or fluctuations in demand?</li>
+                        <li>What are the biggest workforce challenges you face today?</li>
+                        <li>Have you experienced high turnover in specific roles? If so, why?</li>
+                        <li>What tasks are hardest to hire for or retain staff?</li>
+                        <li>Are there jobs that employees find undesirable? Why?</li>
+                        <li>How do staffing issues impact your operations and bottom line?</li>
+                        <li>What tasks are repetitive or require minimal decision-making?</li>
+                        <li>Have you made any process improvements or automation changes recently?</li>
+                        <li>What tasks could be done more efficiently with better tools?</li>
+                        <li>What metrics do you use to measure productivity and efficiency?</li>
+                        <li>What are your biggest operational cost drivers related to labor?</li>
+                        <li>How do you assess ROI for new hires or technology upgrades?</li>
+                        <li>Have you considered automating any aspects of your business?</li>
+                        <li>What cost factors influence your technology adoption decisions?</li>
+                        <li>Have you explored robotics or automation solutions before?</li>
+                        <li>If you could automate one task today, what would it be?</li>
+                        <li>What concerns do you have about integrating robotics?</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section className="mb-12">
+                <h2 className="text-4xl font-bold mb-6 text-rich-black">The Solution</h2>
+                <p className="text-gray-700 text-lg leading-relaxed">
+                  A rental or leasing model removes the financial and logistical barriers to humanoid robot adoption, making them more accessible and practical across industries. By offering a scalable and cost-effective pathway, businesses of all sizes can integrate humanoid robots without the burden of large upfront investments.
+                </p>
+                <p className="text-gray-700 text-lg leading-relaxed mt-4">
+                  In the early stages of any new technology, potential adopters—those who see the value but hesitate due to risk—need a low-commitment way to test and implement innovations. This is especially true for humanoid robots, an industry still in its infancy.
+                </p>
+              </section>
+
+              <section className="mb-12">
+                <h2 className="text-4xl font-bold mb-6 text-rich-black">MVP Development</h2>
+                <p className="text-gray-700 text-lg leading-relaxed">
+                  For a bare bones MVP, we identified three critical epics that would provide essential functionality while allowing room for continuous improvements:
+                </p>
+
+                <div className="space-y-8 mt-8">
+                  {/* Epic 1 */}
+                  <div className="bg-white p-6 rounded-lg shadow-md">
+                    <h3 className="text-2xl font-bold mb-4 text-rich-black">Epic 1 | Search Experience</h3>
+                    <div className="space-y-4">
+                      <div>
+                        <h4 className="font-semibold text-xl mb-2">Core Features</h4>
+                        <ul className="list-disc pl-6 space-y-1 text-gray-700">
+                          <li>Search interface with date range picker</li>
+                          <li>Results display with availability status</li>
+                          <li>Filter options implementation</li>
+                          <li>Detailed robot information pages</li>
+                        </ul>
+                      </div>
+                      <a 
+                        href="https://artwo.atlassian.net/wiki/external/NzRhYzc0ODk0OWQyNDYyY2JjMzQyNTcxMmRiOTc2MzE"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 mt-4 px-6 py-2 bg-tomato/10 text-tomato rounded-lg hover:bg-tomato/20 transition-colors duration-300 font-medium"
+                      >
+                        Epic 1 Product Requirement Document
+                        <FontAwesomeIcon icon={faArrowRight} className="text-sm" />
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* Epic 2 */}
+                  <div className="bg-white p-6 rounded-lg shadow-md">
+                    <h3 className="text-2xl font-bold mb-4 text-rich-black">Epic 2 | Booking System</h3>
+                    <div className="space-y-4">
+                      <div>
+                        <h4 className="font-semibold text-xl mb-2">Core Features</h4>
+                        <ul className="list-disc pl-6 space-y-1 text-gray-700">
+                          <li>User account management</li>
+                          <li>Booking and reservation system</li>
+                          <li>Secure payment processing</li>
+                          <li>Booking confirmation and notifications</li>
+                        </ul>
+                      </div>
+                      <a 
+                        href="https://artwo.atlassian.net/wiki/external/YTcwZjBiYmU0MjQ5NDc2NmI0YzE0NDNiYmE4YWY4ODc"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 mt-4 px-6 py-2 bg-tomato/10 text-tomato rounded-lg hover:bg-tomato/20 transition-colors duration-300 font-medium"
+                      >
+                        Epic 2 Product Requirement Document
+                        <FontAwesomeIcon icon={faArrowRight} className="text-sm" />
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* Epic 3 */}
+                  <div className="bg-white p-6 rounded-lg shadow-md">
+                    <h3 className="text-2xl font-bold mb-4 text-rich-black">Epic 3 | Booking Management</h3>
+                    <div className="space-y-4">
+                      <div>
+                        <h4 className="font-semibold text-xl mb-2">Core Features</h4>
+                        <ul className="list-disc pl-6 space-y-1 text-gray-700">
+                          <li>Booking modification and cancellation</li>
+                          <li>Booking history and tracking</li>
+                          <li>Receipt and documentation management</li>
+                          <li>Admin dashboard and controls</li>
+                        </ul>
+                      </div>
+                      <a 
+                        href="https://artwo.atlassian.net/wiki/external/M2I2YWVjMWIxMDAyNDVlMjkwMzJiMzAyZmNmYzlhZTY"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 mt-4 px-6 py-2 bg-tomato/10 text-tomato rounded-lg hover:bg-tomato/20 transition-colors duration-300 font-medium"
+                      >
+                        Epic 3 Product Requirement Document
+                        <FontAwesomeIcon icon={faArrowRight} className="text-sm" />
+                      </a>
                     </div>
                   </div>
                 </div>

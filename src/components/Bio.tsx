@@ -139,7 +139,7 @@ const Bio: React.FC = () => {
       id: 'work',
       title: 'About Me',
       content: (
-        <div className="flex flex-col md:flex-row items-end gap-10">
+        <div className="flex flex-col md:flex-row items-start gap-10">
           <div className="flex flex-col flex-shrink-0 space-y-10">
             <img 
               src={samPhoto} 
@@ -559,7 +559,7 @@ const Bio: React.FC = () => {
                   >
                     <div className="text-xl text-gray-700 leading-relaxed whitespace-pre-line">
                       {activeSection === 'personal details' && (
-                        <div className="flex flex-col md:flex-row items-end gap-10">
+                        <div className="flex flex-col md:flex-row items-start gap-10">
                           <div className="flex-shrink-0">
                             <img 
                               src={samPhoto} 

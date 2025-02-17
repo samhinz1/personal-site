@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
@@ -73,13 +72,13 @@ const CaseStudies: React.FC = () => {
                     ))}
                   </div>
                   <motion.div whileHover={{ x: 5 }}>
-                    <Link
-                      to={`/case-study/${study.id}`}
+                    <a
+                      href={`/case-study/${study.id}`}
                       className="inline-flex items-center text-tomato hover:text-rich-black transition-colors font-semibold"
                     >
                       Read Case Study
                       <FontAwesomeIcon icon={faArrowRight} className="ml-2" />
-                    </Link>
+                    </a>
                   </motion.div>
                 </div>
               </motion.div>

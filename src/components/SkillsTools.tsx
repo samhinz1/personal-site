@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useRef, useEffect } from 'react';
+import { motion, AnimatePresence, useAnimation } from 'framer-motion';
 
 const tools = [
   {
@@ -58,11 +58,42 @@ const tools = [
   }
 ];
 
-// Create 4 sets of tools for smoother animation
-const extendedTools = [...tools, ...tools, ...tools, ...tools];
+// Create 3 sets of tools for smoother infinite loop
+const extendedTools = [...tools, ...tools, ...tools];
 
 const SkillsTools: React.FC = () => {
   const [hoveredTool, setHoveredTool] = useState<{ id: number, index: number } | null>(null);
+  const [containerWidth, setContainerWidth] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (containerRef.current) {
+      const width = (containerRef.current.scrollWidth / 3);
+      setContainerWidth(width);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!hoveredTool && containerWidth > 0) {
+      controls.start({
+        x: [-containerWidth, -containerWidth * 2],
+        transition: {
+          duration: 20,
+          ease: "linear",
+          repeat: Infinity,
+          repeatType: "loop",
+          times: [0, 1]
+        }
+      });
+    } else {
+      controls.stop();
+    }
+
+    return () => {
+      controls.stop();
+    };
+  }, [hoveredTool, containerWidth, controls]);
 
   return (
     <section id="skills" className="py-20 bg-gray-50">
@@ -89,15 +120,10 @@ const SkillsTools: React.FC = () => {
               <div className="absolute right-0 top-0 w-32 h-full bg-gradient-to-l from-gray-50 via-gray-50 to-transparent z-10" />
               
               <motion.div
+                ref={containerRef}
                 className="flex space-x-8"
-                animate={hoveredTool ? { x: 0 } : {
-                  x: [0, -1000],
-                  transition: {
-                    duration: 30,
-                    ease: "linear",
-                    repeat: Infinity,
-                  }
-                }}
+                animate={controls}
+                initial={{ x: 0 }}
               >
                 {extendedTools.map((tool, index) => (
                   <motion.div
