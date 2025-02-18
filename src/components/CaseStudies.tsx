@@ -21,10 +21,10 @@ const caseStudies = [
   },
   {
     id: 3,
-    title: "Kindle Case Study",
-    summary: "Developing an AI TTS feature to enable visually impaired users to read Kindle books more naturally.",
-    tags: ["Feature Request", "User Research", "Mockup"],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Amazon_Kindle_logo.svg/582px-Amazon_Kindle_logo.svg.png"
+    title: "Audible Case Study",
+    summary: "New AI feature to combine AI text-to-speech technology with audiobooks, giving listeners the freedom to choose their perfect narrator.",
+    tags: ["Feature Request", "User Research", "AI Technology"],
+    imageUrl: "https://cdn.brandfetch.io/idT82q9yNb/theme/dark/logo.svg?c=1dxbfHSJFAPEGdCLU4o5B"
   }
 ];
 

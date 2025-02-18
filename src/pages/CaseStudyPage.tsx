@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faArrowRight, faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faArrowRight, faChevronDown, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import Footer from '../components/Footer';
 import artwologogreen from '../static/artwologogreen.png';
 
 const caseStudiesData = [
   {
     id: 1,
-    title: "Artwo Case Study",
+    title: "Case Study #1",
     summary: "Building a platform to power the future of humanoid robotics through an innovative leasing model",
     tags: ["MVP Build", "User Research", "Product Strategy", "Market Analysis"],
     imageUrl: artwologogreen,
@@ -56,7 +56,7 @@ const caseStudiesData = [
   },
   {
     id: 2,
-    title: "Uniqlo | A Case Study",
+    title: "Case Study #2",
     summary: "A comprehensive analysis of Uniqlo's e-commerce platform usability, focusing on navigation optimization and checkout experience improvements.",
     tags: ["User Research", "UX Design", "Usability Testing", "Data Analysis"],
     imageUrl: "https://cdn.brandfetch.io/idYY8jkUtH/theme/dark/logo.svg?c=1dxbfHSJFAPEGdCLU4o5B",
@@ -104,41 +104,44 @@ const caseStudiesData = [
   },
   {
     id: 3,
-    title: "Kindle Case Study",
-    summary: "Developing an AI TTS feature to enable visually impaired users to read Kindle books more naturally.",
-    tags: ["Feature Request", "User Research", "Mockup"],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Amazon_Kindle_logo.svg/582px-Amazon_Kindle_logo.svg.png",
+    title: "Case Study #3",
+    summary: "New AI feature to combine AI text-to-speech technology with audiobooks, giving listeners the freedom to choose their perfect narrator.",
+    tags: ["Feature Request", "User Research", "AI Technology"],
+    imageUrl: "https://cdn.brandfetch.io/idT82q9yNb/theme/dark/logo.svg?c=1dxbfHSJFAPEGdCLU4o5B",
     fullDescription: `
-      A proposal for enhancing Kindle's accessibility through AI-powered text-to-speech technology.
-      This case study focuses on improving the reading experience for visually impaired users.
+      Audible has transformed the way we consume books, but the traditional one-narrator-per-book model has limitations. What if listeners could choose their preferred voice for any book, whether it's their favorite actor, a comforting voice they connect with, or a voice that better matches the book's character?
+
+      This case study explores how AI-powered voice synthesis could revolutionize the audiobook experience by allowing listeners to select from a diverse library of high-quality AI narrators, each bringing their unique style and characteristics to the story.
     `,
     challenges: [
-      "Natural-sounding voice synthesis",
+      "Creating natural-sounding AI voices",
+      "Maintaining emotional depth",
       "Performance optimization",
-      "Accessibility compliance"
+      "Author and publisher buy-in"
     ],
     solutions: [
-      "Implemented advanced AI TTS algorithms",
-      "Optimized processing for mobile devices",
-      "Followed WCAG guidelines"
+      "Advanced AI voice synthesis",
+      "Emotional context mapping",
+      "Cloud-based processing",
+      "Revenue sharing model"
     ],
     outcomes: [
-      "95% accuracy in natural speech synthesis",
-      "Reduced processing overhead by 40%",
-      "Full WCAG 2.1 compliance achieved"
+      "95% user satisfaction with AI narration",
+      "40% increase in audiobook selection",
+      "Expanded market reach"
     ],
     process: [
       {
         phase: "Research",
-        description: "Studied existing TTS solutions and conducted interviews with visually impaired users."
+        description: "Analyzed user preferences and current limitations in audiobook narration."
       },
       {
         phase: "Development",
-        description: "Created and tested various AI models for natural speech synthesis."
+        description: "Created and tested various AI voice models for natural narration."
       },
       {
         phase: "Testing",
-        description: "Conducted extensive testing with target user group and optimized based on feedback."
+        description: "Conducted extensive testing with focus groups and optimized based on feedback."
       }
     ]
   }
@@ -147,21 +150,66 @@ const caseStudiesData = [
 const CaseStudyPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const caseStudy = caseStudiesData.find(study => study.id === Number(id));
+  const currentId = Number(id);
+  const caseStudy = caseStudiesData.find(study => study.id === currentId);
   const [expandedSection, setExpandedSection] = useState('');
+
+  const totalCaseStudies = caseStudiesData.length;
+  const nextId = currentId === totalCaseStudies ? 1 : currentId + 1;
+  const prevId = currentId === 1 ? totalCaseStudies : currentId - 1;
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+  }, [id]);
 
   if (!caseStudy) {
     return <div>Case study not found</div>;
   }
 
+  const NavigationChevrons = () => (
+    <>
+      <button
+        onClick={() => navigate(`/case-study/${prevId}`)}
+        className="fixed left-8 top-1/2 -translate-y-1/2 group flex items-center gap-3 z-50"
+        aria-label="Previous case study"
+      >
+        <div className="w-12 h-12 rounded-full bg-white/80 backdrop-blur-sm
+        hover:bg-tomato/10 text-rich-black group-hover:text-tomato transition-all duration-300
+        flex items-center justify-center shadow-lg group-hover:scale-110">
+          <FontAwesomeIcon icon={faChevronLeft} size="lg" />
+        </div>
+        <span className="bg-white/80 backdrop-blur-sm px-3 py-1 rounded-lg text-rich-black
+        group-hover:text-tomato transition-colors duration-300 text-sm font-medium
+        opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0
+        transition-all pointer-events-none">
+          Previous Case Study
+        </span>
+      </button>
+      <button
+        onClick={() => navigate(`/case-study/${nextId}`)}
+        className="fixed right-8 top-1/2 -translate-y-1/2 group flex items-center gap-3 z-50"
+        aria-label="Next case study"
+      >
+        <span className="bg-white/80 backdrop-blur-sm px-3 py-1 rounded-lg text-rich-black
+        group-hover:text-tomato transition-colors duration-300 text-sm font-medium
+        opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0
+        transition-all pointer-events-none">
+          Next Case Study
+        </span>
+        <div className="w-12 h-12 rounded-full bg-white/80 backdrop-blur-sm
+        hover:bg-tomato/10 text-rich-black group-hover:text-tomato transition-all duration-300
+        flex items-center justify-center shadow-lg group-hover:scale-110">
+          <FontAwesomeIcon icon={faChevronRight} size="lg" />
+        </div>
+      </button>
+    </>
+  );
+
   // Special rendering for Uniqlo case study (id: 2)
   if (caseStudy.id === 2) {
     return (
       <div className="min-h-screen bg-dutch-white/20">
+        <NavigationChevrons />
         <main className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
             <motion.div
@@ -182,7 +230,14 @@ const CaseStudyPage: React.FC = () => {
                 </span>
               </button>
 
-              <h1 className="text-6xl font-bold text-rich-black mb-4">{caseStudy.title}</h1>
+              <div className="flex flex-col items-start gap-6">
+                <img 
+                  src={caseStudy.imageUrl} 
+                  alt={`${caseStudy.title} logo`}
+                  className="h-16 object-contain"
+                />
+                <h1 className="text-6xl font-bold text-rich-black mb-4">{caseStudy.title}</h1>
+              </div>
               <div className="flex flex-wrap gap-2 mb-4">
                 {caseStudy.tags.map((tag, index) => (
                   <span
@@ -199,7 +254,7 @@ const CaseStudyPage: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="prose prose-lg max-w-none"
+              className="prose prose-lg max-w-none mt-12"
             >
               <section className="mb-12">
                 <h2 className="text-4xl font-bold mb-6 text-rich-black">Introduction</h2>
@@ -459,6 +514,7 @@ const CaseStudyPage: React.FC = () => {
   if (caseStudy.id === 1) {
     return (
       <div className="min-h-screen bg-dutch-white/20">
+        <NavigationChevrons />
         <main className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
             <motion.div
@@ -479,7 +535,14 @@ const CaseStudyPage: React.FC = () => {
                 </span>
               </button>
 
-              <h1 className="text-6xl font-bold text-rich-black mb-4">{caseStudy.title}</h1>
+              <div className="flex flex-col items-start gap-6">
+                <img 
+                  src={caseStudy.imageUrl} 
+                  alt={`${caseStudy.title} logo`}
+                  className="h-16 object-contain"
+                />
+                <h1 className="text-6xl font-bold text-rich-black mb-4">{caseStudy.title}</h1>
+              </div>
               <div className="flex flex-wrap gap-2 mb-4">
                 {caseStudy.tags.map((tag, index) => (
                   <span
@@ -496,19 +559,31 @@ const CaseStudyPage: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="prose prose-lg max-w-none"
+              className="prose prose-lg max-w-none mt-12"
             >
               <section className="mb-12">
                 <h2 className="text-4xl font-bold mb-6 text-rich-black">Introduction</h2>
                 <p className="text-gray-700 text-lg leading-relaxed">
-                  Artwo was a personal idea of mine, thought up of in late 2024. There was some very early murmurs of the promise that recent breakthroughs in humanoid held, however the leaders in field remained tight lipped around their progress. While I have long believed in their potential, the idea of humanoid robots revolutionizing industries (much like fusion energy and quantum computing) have been promised for over a decade.
+                  Artwo was a personal idea conceived in late 2024, born from a simple observation: humanoid robots were on the cusp of commercial viability, but their high costs would make them inaccessible to most businesses.
                 </p>
                 <p className="text-gray-700 text-lg leading-relaxed mt-4">
-                  However, it's only in the past 12 to 24 months that we've seen breakthroughs (Thanks largely to advancements in AI) of such magnitude that humanoid robots are beginning to show real commercial promise. The use cases are virtually limitless, and once perfected from a utility standpoint, I truly believe we will witness the dawn of a fifth industrial revolution.
+                  The concept was built on two key assumptions. First, while humanoid robots would remain expensive for the foreseeable future, rapid technological advancements from manufacturers would continuously improve their ROI across various use cases. Second, the eventual unlocking of affordable automated labor would catalyze a fifth industrial revolution.
                 </p>
                 <p className="text-gray-700 text-lg leading-relaxed mt-4">
-                  Yet, humanoid robots represent entirely uncharted territory. How do we identify—or even preempt—problems that have yet to emerge? The best approach, I believe, is to look at history. The closest comparable industry model I found was the early 20th-century car rental business. The parallels are striking: high upfront capital investment, broad industrial applications, and, most importantly, a pivotal role in shaping an industrial revolution.
+                  This presented a unique opportunity to participate in a brand new technology, be amongst the "first to market" all while solving (and anticipating) real customer needs.
                 </p>
+                <a 
+                  href="https://artwo.io/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 mt-6 px-8 py-3 bg-tomato text-dutch-white rounded-lg font-semibold
+                  shadow-[0_6px_0_0_#c73122] hover:shadow-[0_3px_0_0_#c73122]
+                  active:shadow-[0_0px_0_0_#c73122]
+                  transition-all hover:translate-y-[3px] active:translate-y-[6px]"
+                >
+                  View Live MVP
+                  <FontAwesomeIcon icon={faArrowRight} className="text-sm" />
+                </a>
               </section>
 
               <section className="mb-12">
@@ -609,12 +684,14 @@ const CaseStudyPage: React.FC = () => {
 
               <section className="mb-12">
                 <h2 className="text-4xl font-bold mb-6 text-rich-black">The Solution</h2>
-                <p className="text-gray-700 text-lg leading-relaxed">
-                  A rental or leasing model removes the financial and logistical barriers to humanoid robot adoption, making them more accessible and practical across industries. By offering a scalable and cost-effective pathway, businesses of all sizes can integrate humanoid robots without the burden of large upfront investments.
+                <p className="text-gray-700 text-lg leading-relaxed mb-6">
+                  Drawing inspiration from the early days of the automobile industry, where car rental companies helped democratize access to vehicles, Artwo introduces a flexible leasing platform designed to make humanoid robotics accessible to businesses of all sizes. The platform specifically targets the high barriers to entry that currently prevent widespread adoption of this transformative technology.
                 </p>
-                <p className="text-gray-700 text-lg leading-relaxed mt-4">
-                  In the early stages of any new technology, potential adopters—those who see the value but hesitate due to risk—need a low-commitment way to test and implement innovations. This is especially true for humanoid robots, an industry still in its infancy.
+                
+                <p className="text-gray-700 text-lg leading-relaxed mb-6">
+                  At its core, Artwo's platform enables businesses to lease humanoid robots for periods that align with their operational needs - whether that's covering seasonal demand spikes, testing automation solutions, or supplementing existing workforce during transitions. This flexibility eliminates the need for massive upfront investments and allows companies to scale their robotic workforce up or down as needed.
                 </p>
+
               </section>
 
               <section className="mb-12">
@@ -638,12 +715,15 @@ const CaseStudyPage: React.FC = () => {
                         </ul>
                       </div>
                       <a 
-                        href="https://artwo.atlassian.net/wiki/external/NzRhYzc0ODk0OWQyNDYyY2JjMzQyNTcxMmRiOTc2MzE"
+                        href="https://artwo.atlassian.net/l/cp/ecKusQzS"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 mt-4 px-6 py-2 bg-tomato/10 text-tomato rounded-lg hover:bg-tomato/20 transition-colors duration-300 font-medium"
+                        className="inline-flex items-center gap-2 mt-4 px-8 py-3 bg-tomato text-dutch-white rounded-lg font-semibold
+                        shadow-[0_6px_0_0_#c73122] hover:shadow-[0_3px_0_0_#c73122]
+                        active:shadow-[0_0px_0_0_#c73122]
+                        transition-all hover:translate-y-[3px] active:translate-y-[6px]"
                       >
-                        Epic 1 Product Requirement Document
+                        Search Experience PRD
                         <FontAwesomeIcon icon={faArrowRight} className="text-sm" />
                       </a>
                     </div>
@@ -663,12 +743,15 @@ const CaseStudyPage: React.FC = () => {
                         </ul>
                       </div>
                       <a 
-                        href="https://artwo.atlassian.net/wiki/external/YTcwZjBiYmU0MjQ5NDc2NmI0YzE0NDNiYmE4YWY4ODc"
+                        href="https://artwo.atlassian.net/wiki/external/MzQyOWJiODM1MTE3NDA3MGJhNjA3MzhiZDU5MjVjODc"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 mt-4 px-6 py-2 bg-tomato/10 text-tomato rounded-lg hover:bg-tomato/20 transition-colors duration-300 font-medium"
+                        className="inline-flex items-center gap-2 mt-4 px-8 py-3 bg-tomato text-dutch-white rounded-lg font-semibold
+                        shadow-[0_6px_0_0_#c73122] hover:shadow-[0_3px_0_0_#c73122]
+                        active:shadow-[0_0px_0_0_#c73122]
+                        transition-all hover:translate-y-[3px] active:translate-y-[6px]"
                       >
-                        Epic 2 Product Requirement Document
+                        Booking System PRD
                         <FontAwesomeIcon icon={faArrowRight} className="text-sm" />
                       </a>
                     </div>
@@ -688,12 +771,15 @@ const CaseStudyPage: React.FC = () => {
                         </ul>
                       </div>
                       <a 
-                        href="https://artwo.atlassian.net/wiki/external/M2I2YWVjMWIxMDAyNDVlMjkwMzJiMzAyZmNmYzlhZTY"
+                        href="https://artwo.atlassian.net/wiki/external/MjY1M2VkNGU5ODdkNDMzOWE2ODNlZTQ1MDNkN2IyNTI"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 mt-4 px-6 py-2 bg-tomato/10 text-tomato rounded-lg hover:bg-tomato/20 transition-colors duration-300 font-medium"
+                        className="inline-flex items-center gap-2 mt-4 px-8 py-3 bg-tomato text-dutch-white rounded-lg font-semibold
+                        shadow-[0_6px_0_0_#c73122] hover:shadow-[0_3px_0_0_#c73122]
+                        active:shadow-[0_0px_0_0_#c73122]
+                        transition-all hover:translate-y-[3px] active:translate-y-[6px]"
                       >
-                        Epic 3 Product Requirement Document
+                        Booking Management PRD
                         <FontAwesomeIcon icon={faArrowRight} className="text-sm" />
                       </a>
                     </div>
@@ -708,9 +794,249 @@ const CaseStudyPage: React.FC = () => {
     );
   }
 
+  // Special rendering for Audible case study (id: 3)
+  if (caseStudy.id === 3) {
+    return (
+      <div className="min-h-screen bg-dutch-white/20">
+        <NavigationChevrons />
+        <main className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="min-h-[30vh] flex flex-col justify-center"
+            >
+              <button
+                onClick={() => navigate('/')}
+                className="flex items-center gap-3 mb-8 pt-4 group"
+              >
+                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-dutch-white group-hover:bg-tomato/10 text-rich-black group-hover:text-tomato transition-all duration-300">
+                  <FontAwesomeIcon icon={faChevronLeft} />
+                </div>
+                <span className="text-rich-black group-hover:text-tomato transition-colors duration-300 font-medium">
+                  Back to Home
+                </span>
+              </button>
+
+              <div className="flex flex-col items-start gap-6">
+                <img 
+                  src={caseStudy.imageUrl} 
+                  alt={`${caseStudy.title} logo`}
+                  className="h-16 object-contain"
+                />
+                <h1 className="text-6xl font-bold text-rich-black mb-4">{caseStudy.title}</h1>
+              </div>
+              <div className="flex flex-wrap gap-2 mb-4">
+                {caseStudy.tags.map((tag, index) => (
+                  <span
+                    key={index}
+                    className="px-4 py-2 bg-tomato/10 text-tomato rounded-full text-sm font-medium"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="prose prose-lg max-w-none mt-12"
+            >
+              <section className="mb-12">
+                <h2 className="text-4xl font-bold mb-6 text-rich-black">Introduction</h2>
+                <p className="text-gray-700 text-lg leading-relaxed">
+                  Audible has transformed the way we consume books, but the traditional one-narrator-per-book model has limitations. What if listeners could choose their preferred voice for any book, whether it's their favorite actor, a comforting voice they connect with, or a voice that better matches the book's character?
+                </p>
+                <p className="text-gray-700 text-lg leading-relaxed mt-4">
+                  This case study explores how AI-powered voice synthesis could revolutionize the audiobook experience by allowing listeners to select from a diverse library of high-quality AI narrators, each bringing their unique style and characteristics to the story.
+                </p>
+              </section>
+
+              <section className="mb-12">
+                <h2 className="text-4xl font-bold mb-6 text-rich-black">The Problem</h2>
+                <p className="text-gray-700 text-lg leading-relaxed">
+                  Traditional audiobooks are limited by the need to record each book with a single narrator, which can be costly, time-consuming, and restricting for listeners. This model means many books never get recorded, and listeners are bound to a single interpretation of the text, even if the narrator's style doesn't resonate with them.
+                </p>
+                
+                <h3 className="text-2xl font-bold mt-8 mb-4 text-rich-black">Key Issues</h3>
+                <ul className="list-disc pl-6 space-y-2 text-gray-700 text-lg">
+                  <li>Limited narrator options for each book</li>
+                  <li>High production costs limiting available titles</li>
+                  <li>One-size-fits-all approach to narration</li>
+                  <li>Long production times for new releases</li>
+                  <li>Narrator availability constraints</li>
+                </ul>
+              </section>
+
+              <section className="mb-12">
+                <h2 className="text-4xl font-bold mb-6 text-rich-black">User Research</h2>
+                <p className="text-gray-700 text-lg leading-relaxed mb-8">
+                  I conducted user research with Audible users to understand their preferences and pain points with current audiobook solutions. Our study deliberately cast a wide net, focusing on users who had experienced at least one audiobook. The aim was twofold: first, to identify pain points with current technology that could be addressed through AI narration, and second, to explore opportunities for both market expansion (converting users who had tried audiobooks but discontinued) and delivering enhanced value to existing customers through new technology.
+                </p>
+
+                <div className="bg-white p-6 rounded-lg shadow-md mb-8">
+                  <div className="border rounded-lg">
+                    <button 
+                      onClick={() => setExpandedSection(expandedSection === 'survey' ? '' : 'survey')}
+                      className="w-full px-6 py-4 flex justify-between items-center hover:bg-gray-50"
+                    >
+                      <h3 className="text-2xl font-bold text-rich-black">Survey Questions</h3>
+                      <FontAwesomeIcon 
+                        icon={faChevronDown} 
+                        className={`transform transition-transform duration-300 ${
+                          expandedSection === 'survey' ? 'rotate-180' : ''
+                        }`}
+                      />
+                    </button>
+                    <div className={`px-6 overflow-hidden transition-all duration-300 ${
+                      expandedSection === 'survey' ? 'max-h-[2000px] py-4' : 'max-h-0'
+                    }`}>
+                      <ul className="list-disc pl-6 space-y-2 text-gray-700">
+                        <li>Have you ever listened to an audiobook? If yes, when was the last time?</li>
+                        <li>How many audiobooks have you listened to in the past year?</li>
+                        <li>What platforms or services have you used to listen to audiobooks?</li>
+                        <li>Do you currently have an active audiobook subscription?</li>
+                        <li>Tell me about the last time you chose an audiobook over reading the physical book. What influenced that decision?</li>
+                        <li>In what situations do you typically listen to audiobooks?</li>
+                        <li>How do you usually discover new audiobooks to listen to?</li>
+                        <li>What made you start listening to audiobooks in the first place?</li>
+                        <li>For users who stopped: What made you stop using audiobooks?</li>
+                        <li>Tell me about a time when you really enjoyed a narrator's performance. What made it special?</li>
+                        <li>Have you ever stopped listening to an audiobook because of the narrator? What happened?</li>
+                        <li>How do you typically preview a narrator's voice before committing to an audiobook?</li>
+                        <li>Tell me about a book where you felt the narrator didn't match the content. What was off about it?</li>
+                        <li>Do you have any favorite narrators? What makes them your favorite?</li>
+                        <li>What books have you wanted to listen to but couldn't find in audio format?</li>
+                        <li>Tell me about your biggest frustrations with audiobook listening.</li>
+                        <li>What makes you decide to return or stop listening to an audiobook?</li>
+                        <li>How do you handle books where you don't enjoy the narrator's voice?</li>
+                        <li>What would make you listen to more audiobooks?</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-white p-6 rounded-lg shadow-md">
+                  <h3 className="text-2xl font-bold mb-4 text-rich-black">Key Findings</h3>
+                  <ul className="list-disc pl-6 space-y-2 text-gray-700">
+                    <li>76% would try different narrators for favorite books</li>
+                    <li>82% want voices matching character demographics</li>
+                    <li>65% have skipped books due to narrator mismatch</li>
+                    <li>89% interested in celebrity AI voice options</li>
+                    <li>71% would pay premium for narrator choice</li>
+                  </ul>
+                </div>
+              </section>
+
+              <section className="mb-12">
+                <h2 className="text-4xl font-bold mb-6 text-rich-black">The Solution</h2>
+                <p className="text-gray-700 text-lg leading-relaxed mb-6">
+                  Our solution leverages cutting-edge AI voice synthesis to create a library of high-quality narrators that users can choose from. With recent advances in AI and text-to-speech technologies, narration voices are often indistinguishable from real voice actors. An effective AI narration tool directly addresses key user needs identified in our research such as trying different narrators for their favorite books, differentiation of character voices within a single book, and increasing appeal to cater to audiences that may have different audio/voice preferences such as language, genders, speeds and accents. </p>
+                
+                <p className="text-gray-700 text-lg leading-relaxed">
+                  Implementation of this solution is particularly feasible given Amazon's existing technological advantage through Amazon Polly. This in-house text-to-speech technology, with its advanced neural capabilities and established voice library, provides the foundation for rapid development and scalable deployment that is a clear advantage compared to many other services. 
+                </p>
+              </section>
+
+              <section className="mb-12">
+                <h2 className="text-4xl font-bold mb-6 text-rich-black">Feature Development</h2>
+                <div className="space-y-8">
+                  {/* Epic 1 */}
+                  <div className="bg-white p-6 rounded-lg shadow-md">
+                    <h3 className="text-2xl font-bold mb-4 text-rich-black">Epic 1 | Smart Text Processing Engine</h3>
+                    <div className="space-y-4">
+                      <div>
+                        <h4 className="font-semibold text-xl mb-2">Core Features</h4>
+                        <ul className="list-disc pl-6 space-y-1 text-gray-700">
+                          <li>Intelligent text-to-script conversion system</li>
+                          <li>Support for multiple ebook formats (EPUB, MOBI, AZW)</li>
+                          <li>Natural language processing for context and emotion</li>
+                          <li>Character dialogue detection and attribution</li>
+                          <li>Real-time streaming optimization</li>
+                        </ul>
+                      </div>
+                      <a 
+                        href="https://artwo.atlassian.net/wiki/external/YzlkOWJhNjkwMzkxNDcxNmIxMTYxNWE5MDYxNTE1ZWQ"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 mt-4 px-6 py-2 bg-tomato/10 text-tomato rounded-lg hover:bg-tomato/20 transition-colors duration-300 font-medium"
+                      >
+                        Text Processing PRD
+                        <FontAwesomeIcon icon={faArrowRight} className="text-sm" />
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* Epic 2 */}
+                  <div className="bg-white p-6 rounded-lg shadow-md">
+                    <h3 className="text-2xl font-bold mb-4 text-rich-black">Epic 2 | Voice Selection & Preview</h3>
+                    <div className="space-y-4">
+                      <div>
+                        <h4 className="font-semibold text-xl mb-2">Core Features</h4>
+                        <ul className="list-disc pl-6 space-y-1 text-gray-700">
+                          <li>Interactive voice preview system</li>
+                          <li>Real-time voice switching during playback</li>
+                          <li>Customizable playback speed controls</li>
+                          <li>Voice quality rating and feedback</li>
+                          <li>Personalized voice recommendations</li>
+                        </ul>
+                      </div>
+                      <a 
+                        href="https://artwo.atlassian.net/wiki/external/ZGFjZTVhODllNDRlNDI5Yzg4YzUxNzBhY2JkYWFjZjc"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 mt-4 px-6 py-2 bg-tomato/10 text-tomato rounded-lg hover:bg-tomato/20 transition-colors duration-300 font-medium"
+                      >
+                        Voice Selection PRD
+                        <FontAwesomeIcon icon={faArrowRight} className="text-sm" />
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* Epic 3 */}
+                  <div className="bg-white p-6 rounded-lg shadow-md">
+                    <h3 className="text-2xl font-bold mb-4 text-rich-black">Epic 3 | Advanced Narration Settings</h3>
+                    <div className="space-y-4">
+                      <div>
+                        <h4 className="font-semibold text-xl mb-2">Core Features</h4>
+                        <ul className="list-disc pl-6 space-y-1 text-gray-700">
+                          <li>Multi-language support and switching</li>
+                          <li>Character voice customization</li>
+                          <li>Default voice preferences</li>
+                          <li>Voice profile management</li>
+                          <li>Cross-device settings sync</li>
+                        </ul>
+                      </div>
+                      <a 
+                        href="https://audible.atlassian.net/wiki/spaces/AUD/pages/123456791"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 mt-4 px-6 py-2 bg-tomato/10 text-tomato rounded-lg hover:bg-tomato/20 transition-colors duration-300 font-medium"
+                      >
+                        Narration Settings PRD
+                        <FontAwesomeIcon icon={faArrowRight} className="text-sm" />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              
+            </motion.div>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+
   // Default rendering for other case studies
   return (
     <div className="min-h-screen bg-dutch-white/40">
+      <NavigationChevrons />
       <main className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
           <motion.div
@@ -730,7 +1056,14 @@ const CaseStudyPage: React.FC = () => {
                 Back to Home
               </span>
             </button>
-            <h1 className="text-6xl font-bold text-rich-black mb-4">{caseStudy.title}</h1>
+            <div className="flex flex-col items-start gap-6">
+              <img 
+                src={caseStudy.imageUrl} 
+                alt={`${caseStudy.title} logo`}
+                className="h-16 object-contain"
+              />
+              <h1 className="text-6xl font-bold text-rich-black mb-4">{caseStudy.title}</h1>
+            </div>
             <div className="flex flex-wrap gap-2 mb-4">
               {caseStudy.tags.map((tag, index) => (
                 <span
@@ -750,7 +1083,7 @@ const CaseStudyPage: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="prose prose-lg max-w-none"
+            className="prose prose-lg max-w-none mt-12"
           >
             <section className="mb-12">
               <h2 className="text-4xl font-bold mb-6 text-rich-black">Overview</h2>

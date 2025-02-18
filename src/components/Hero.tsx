@@ -26,10 +26,10 @@ const caseStudies = [
     imageUrl: "https://cdn.brandfetch.io/idYY8jkUtH/theme/dark/logo.svg?c=1dxbfHSJFAPEGdCLU4o5B"
   },
   {
-    title: "Kindle Case Study",
-    summary: "Developing an AI TTS feature to enable visually impaired users to read Kindle books more naturally.",
-    tags: ["Feature Request", "User Research", "Mockup"],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Amazon_Kindle_logo.svg/582px-Amazon_Kindle_logo.svg.png"
+    title: "Audible Case Study",
+    summary: "New AI feature to combine AI text-to-speech technology with audiobooks, giving listeners the freedom to choose their perfect narrator.",
+    tags: ["Feature Request", "User Research", "AI Technology"],
+    imageUrl: "https://cdn.brandfetch.io/idT82q9yNb/theme/dark/logo.svg?c=1dxbfHSJFAPEGdCLU4o5B"
   }
 ];
 
@@ -167,7 +167,7 @@ const Hero: React.FC = () => {
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
-                className="overflow-hidden mt-8 mb-4 max-h-[60vh] sm:max-h-none"
+                className="overflow-visible mt-8 mb-4 max-h-[60vh] sm:max-h-none"
               >
                 {isMobile ? (
                   // Mobile carousel view
@@ -206,40 +206,46 @@ const Hero: React.FC = () => {
                             className="absolute w-full left-0 right-0"
                             style={{ touchAction: "pan-y" }}
                           >
-                            <div className="bg-white rounded-lg shadow-md overflow-hidden cursor-grab active:cursor-grabbing transform-gpu">
-                              <div className="relative h-24 overflow-hidden bg-white flex items-center justify-center">
-                                <img
-                                  src={caseStudies[slideIndex].imageUrl}
-                                  alt={caseStudies[slideIndex].title}
-                                  className="w-full h-full object-contain p-4 select-none"
-                                  draggable="false"
-                                />
-                              </div>
-                              <div className="p-4 select-none">
-                                <h3 className="text-lg font-bold mb-2 text-rich-black">
-                                  {caseStudies[slideIndex].title}
-                                </h3>
-                                <p className="text-sm text-gray-600 mb-3">
-                                  {caseStudies[slideIndex].summary}
-                                </p>
-                                <div className="flex flex-wrap gap-2 mb-3">
-                                  {caseStudies[slideIndex].tags.map((tag, tagIndex) => (
-                                    <span
-                                      key={tagIndex}
-                                      className="px-3 py-1 bg-tomato/10 text-tomato rounded-full text-sm font-medium"
-                                    >
-                                      {tag}
-                                    </span>
-                                  ))}
+                            <div className="bg-white rounded-lg shadow-md overflow-hidden cursor-grab active:cursor-grabbing transform-gpu group">
+                              <a
+                                href={`/case-study/${slideIndex + 1}`}
+                                className="block overflow-hidden rounded-lg"
+                              >
+                                <div className="relative h-24 overflow-hidden bg-white flex items-center justify-center">
+                                  <img
+                                    src={caseStudies[slideIndex].imageUrl}
+                                    alt={caseStudies[slideIndex].title}
+                                    className="w-full h-full object-contain p-4 select-none transform group-hover:scale-105 transition-transform duration-300"
+                                    draggable="false"
+                                  />
                                 </div>
-                                <a
-                                  href={`/case-study/${slideIndex + 1}`}
-                                  className="inline-flex items-center text-sm text-tomato hover:text-rich-black transition-colors font-semibold"
-                                >
-                                  Read More
-                                  <FontAwesomeIcon icon={faArrowRight} className="ml-2" />
-                                </a>
-                              </div>
+                                <div className="p-4 select-none">
+                                  <h3 className="text-lg font-bold mb-2 text-rich-black">
+                                    {caseStudies[slideIndex].title}
+                                  </h3>
+                                  <p className="text-sm text-gray-600 mb-3">
+                                    {caseStudies[slideIndex].summary}
+                                  </p>
+                                  <div className="flex flex-wrap justify-center gap-1 mb-2">
+                                    {caseStudies[slideIndex].tags.map((tag, tagIndex) => (
+                                      <span
+                                        key={tagIndex}
+                                        className="px-1.5 py-0.5 bg-tomato/10 text-tomato rounded-full text-[10px] font-medium whitespace-nowrap"
+                                      >
+                                        {tag}
+                                      </span>
+                                    ))}
+                                  </div>
+                                  <motion.div whileHover={{ x: 5 }}>
+                                    <span
+                                      className="inline-flex items-center text-sm text-tomato hover:text-rich-black transition-colors font-semibold"
+                                    >
+                                      Read More
+                                      <FontAwesomeIcon icon={faArrowRight} className="ml-2" />
+                                    </span>
+                                  </motion.div>
+                                </div>
+                              </a>
                             </div>
                           </motion.div>
                         </AnimatePresence>
@@ -279,43 +285,50 @@ const Hero: React.FC = () => {
                   </div>
                 ) : (
                   // Desktop grid view
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto pt-1.5">
                     {caseStudies.map((study, index) => (
                       <motion.div
                         key={index}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.1 }}
-                        className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300"
+                        whileHover={{ y: -5 }}
+                        className="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 group"
                       >
-                        <div className="relative h-24 overflow-hidden bg-white flex items-center justify-center">
-                          <img
-                            src={study.imageUrl}
-                            alt={study.title}
-                            className="w-full h-full object-contain p-4"
-                          />
-                        </div>
-                        <div className="p-3">
-                          <h3 className="text-base font-bold mb-1 text-rich-black">{study.title}</h3>
-                          <p className="text-xs text-gray-600 mb-2 line-clamp-2">{study.summary}</p>
-                          <div className="flex flex-wrap gap-1 mb-2">
-                            {study.tags.slice(0, 2).map((tag, tagIndex) => (
-                              <span
-                                key={tagIndex}
-                                className="px-2 py-0.5 bg-tomato/10 text-tomato rounded-full text-xs font-medium"
-                              >
-                                {tag}
-                              </span>
-                            ))}
+                        <a
+                          href={`/case-study/${index + 1}`}
+                          className="block overflow-hidden rounded-lg"
+                        >
+                          <div className="relative h-24 overflow-hidden bg-white flex items-center justify-center">
+                            <img
+                              src={study.imageUrl}
+                              alt={study.title}
+                              className="w-full h-full object-contain p-4 transform group-hover:scale-105 transition-transform duration-300"
+                            />
                           </div>
-                          <a
-                            href={`/case-study/${index + 1}`}
-                            className="inline-flex items-center text-xs text-tomato hover:text-rich-black transition-colors font-semibold"
-                          >
-                            Read More
-                            <FontAwesomeIcon icon={faArrowRight} className="ml-2" />
-                          </a>
-                        </div>
+                          <div className="p-3">
+                            <h3 className="text-base font-bold mb-1 text-rich-black">{study.title}</h3>
+                            <p className="text-xs text-gray-600 mb-2">{study.summary}</p>
+                            <div className="flex flex-wrap justify-center gap-1 mb-2">
+                              {study.tags.map((tag, tagIndex) => (
+                                <span
+                                  key={tagIndex}
+                                  className="px-1.5 py-0.5 bg-tomato/10 text-tomato rounded-full text-[10px] font-medium whitespace-nowrap"
+                                >
+                                  {tag}
+                                </span>
+                              ))}
+                            </div>
+                            <motion.div whileHover={{ x: 5 }}>
+                              <span
+                                className="inline-flex items-center text-xs text-tomato hover:text-rich-black transition-colors font-semibold"
+                              >
+                                Read More
+                                <FontAwesomeIcon icon={faArrowRight} className="ml-2" />
+                              </span>
+                            </motion.div>
+                          </div>
+                        </a>
                       </motion.div>
                     ))}
                   </div>
