@@ -51,36 +51,36 @@ const CaseStudies: React.FC = () => {
                 whileHover={{ y: -5 }}
                 className="group bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300"
               >
-                <div className="relative h-48 overflow-hidden bg-white flex items-center justify-center">
-                  <img
-                    src={study.imageUrl}
-                    alt={study.title}
-                    className="w-full h-full object-contain p-4 transform group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold mb-3 text-rich-black">{study.title}</h3>
-                  <p className="text-gray-600 mb-4 leading-relaxed">{study.summary}</p>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {study.tags.map((tag, tagIndex) => (
-                      <span
-                        key={tagIndex}
-                        className="px-3 py-1 bg-tomato/10 text-tomato rounded-full text-sm font-medium"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                <a
+                  href={`/case-study/${study.id}`}
+                  className="block h-full"
+                >
+                  <div className="relative h-48 overflow-hidden bg-white flex items-center justify-center">
+                    <img
+                      src={study.imageUrl}
+                      alt={study.title}
+                      className="w-full h-full object-contain p-4 transform group-hover:scale-105 transition-transform duration-300"
+                    />
                   </div>
-                  <motion.div whileHover={{ x: 5 }}>
-                    <a
-                      href={`/case-study/${study.id}`}
-                      className="inline-flex items-center text-tomato hover:text-rich-black transition-colors font-semibold"
-                    >
+                  <div className="p-6">
+                    <h3 className="text-2xl font-bold mb-3 text-rich-black">{study.title}</h3>
+                    <p className="text-gray-600 mb-4 leading-relaxed">{study.summary}</p>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {study.tags.map((tag, tagIndex) => (
+                        <span
+                          key={tagIndex}
+                          className="px-3 py-1 bg-tomato/10 text-tomato rounded-full text-sm font-medium"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <motion.div whileHover={{ x: 5 }} className="text-tomato hover:text-rich-black transition-colors font-semibold inline-flex items-center">
                       Read Case Study
                       <FontAwesomeIcon icon={faArrowRight} className="ml-2" />
-                    </a>
-                  </motion.div>
-                </div>
+                    </motion.div>
+                  </div>
+                </a>
               </motion.div>
             ))}
           </div>
