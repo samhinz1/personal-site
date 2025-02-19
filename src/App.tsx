@@ -9,7 +9,9 @@ import Timeline from './components/Timeline';
 import CaseStudies from './components/CaseStudies';
 import MouseHalo from './components/MouseHalo';
 import Footer from './components/Footer';
-import CaseStudyPage from './pages/CaseStudyPage';
+import ArtwoCaseStudy from './pages/ArtwoCaseStudy';
+import UniqloCaseStudy from './pages/UniqloCaseStudy';
+import AudibleCaseStudy from './pages/AudibleCaseStudy';
 
 const ScrollReveal = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -62,7 +64,9 @@ function App() {
               </>
             }
           />
-          <Route path="/case-study/:id" element={<CaseStudyPage />} />
+          <Route path="/case-study/1" element={<ArtwoCaseStudy />} />
+          <Route path="/case-study/2" element={<UniqloCaseStudy />} />
+          <Route path="/case-study/3" element={<AudibleCaseStudy />} />
         </Routes>
       </div>
     </Router>

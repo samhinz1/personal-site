@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import samPhoto from '../static/samphoto.png';
+import samCV from '../static/Sam CV.pdf';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone, faEnvelope, faHouse, faFutbol, faBook, faPassport, faKey, faChevronDown, faPaperPlane, faCheckCircle, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
@@ -196,14 +197,14 @@ const Bio: React.FC = () => {
             
             <div className="mt-6 space-y-6">
               <div>
-                <h3 className="text-xl font-semibold text-tomato mb-2">From Analysis to Action</h3>
+                <h3 className="text-xl font-semibold text-tomato mb-2">Action over Analysis</h3>
                 <p>
                   As an investment analyst, I spent years studying what makes great tech companies tick. I've analyzed their products, strategies, and execution. Now, I want to move from being a spectator to an active builder - applying these insights directly to create impactful products.
                 </p>
               </div>
 
               <div>
-                <h3 className="text-xl font-semibold text-tomato mb-2">Bridge Between Business & Tech</h3>
+                <h3 className="text-xl font-semibold text-tomato mb-2">Intersection of Business & Technology</h3>
                 <p>
                   My background in finance and business gives me a strong foundation in strategic thinking and stakeholder management. Combined with my self-taught technical skills, I can effectively bridge the gap between business goals and technical implementation.
                 </p>
@@ -226,7 +227,7 @@ const Bio: React.FC = () => {
       content: (
         <div className="space-y-4">
           <div className="text-lg">
-            <div className="mt-6 space-y-6">
+            <div className=" space-y-6">
               <div>
                 <h3 className="text-xl font-semibold text-tomato mb-2">Technical Skills</h3>
                 <p>
@@ -370,7 +371,7 @@ const Bio: React.FC = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-tomato text-dutch-white px-8 py-4 rounded-xl text-lg font-semibold shadow-md hover:bg-rich-black transition-colors flex items-center space-x-3"
-              onClick={() => window.open('/Sam_Hinz_CV.pdf', '_blank')}
+              onClick={() => window.open(samCV, '_blank')}
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
