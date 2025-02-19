@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import artwologogreen from '../static/ArtwoLogoGreen.png';
@@ -51,8 +52,8 @@ const CaseStudies: React.FC = () => {
                 whileHover={{ y: -5 }}
                 className="group bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300"
               >
-                <a
-                  href={`/case-study/${study.id}`}
+                <Link
+                  to={`/case-study/${study.id}`}
                   className="block h-full"
                 >
                   <div className="relative h-48 overflow-hidden bg-white flex items-center justify-center">
@@ -80,7 +81,7 @@ const CaseStudies: React.FC = () => {
                       <FontAwesomeIcon icon={faArrowRight} className="ml-2" />
                     </motion.div>
                   </div>
-                </a>
+                </Link>
               </motion.div>
             ))}
           </div>

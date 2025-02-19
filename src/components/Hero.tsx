@@ -6,6 +6,7 @@ import { faEnvelope, faChevronDown, faArrowRight, faChevronUp } from '@fortaweso
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import ContactModal from './ContactModal';
 import artwologogreen from '../static/ArtwoLogoGreen.png';
+import { Link } from 'react-router-dom';
 
 const wrap = (min: number, max: number, v: number) => {
   const rangeSize = max - min;
@@ -295,8 +296,8 @@ const Hero: React.FC = () => {
                         whileHover={{ y: -5 }}
                         className="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 group"
                       >
-                        <a
-                          href={`/case-study/${index + 1}`}
+                        <Link
+                          to={`/case-study/${index + 1}`}
                           className="block overflow-hidden rounded-lg"
                         >
                           <div className="relative h-24 overflow-hidden bg-white flex items-center justify-center">
@@ -328,7 +329,7 @@ const Hero: React.FC = () => {
                               </span>
                             </motion.div>
                           </div>
-                        </a>
+                        </Link>
                       </motion.div>
                     ))}
                   </div>
