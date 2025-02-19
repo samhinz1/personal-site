@@ -2,7 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import CaseStudyLayout from '../components/CaseStudyLayout';
-import artwologogreen from '../static/artwologogreen.png';
+import artwologogreen from '../static/ArtwoLogoGreen.png';
 
 const ArtwoCaseStudy: React.FC = () => {
   return (

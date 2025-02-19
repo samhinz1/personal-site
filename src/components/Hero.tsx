@@ -5,7 +5,7 @@ import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope, faChevronDown, faArrowRight, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import ContactModal from './ContactModal';
-import artwologogreen from '../static/artwologogreen.png';
+import artwologogreen from '../static/ArtwoLogoGreen.png';
 
 const wrap = (min: number, max: number, v: number) => {
   const rangeSize = max - min;
