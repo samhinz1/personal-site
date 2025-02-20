@@ -17,13 +17,7 @@ const UniqloCaseStudy: React.FC = () => {
       <section className="mb-12">
         <h2 className="text-4xl font-bold mb-6 text-rich-black">Introduction</h2>
         <p className="text-gray-700 text-lg leading-relaxed">
-          I recently was browsing one of my favorite brands' websites, Uniqlo. I knew I needed to buy myself a new pair of trousers so I fired up Google, typed in Uniqlo and clicked their obnoxiously large banner ad. And this is where the trouble started…
-        </p>
-        <p className="text-gray-700 text-lg leading-relaxed mt-4">
-          At first I just tried clicking "men's" from the top nav bar - pretty obvious right? Nope. It took me to a page with a full screen hero image, right okay maybe i just need to scroll down from here. Needless to say I was a bit dumbfounded.
-        </p>
-        <p className="text-gray-700 text-lg leading-relaxed mt-4">
-          I would consider myself a pretty tech-savvy person, so to get bamboozled by what I had assumed to be a pretty vanilla ecommerce site really stuck out to me. Was I just an idiot who could not work out how to operate an ecommerce site that sells comfy sweaters? Or had the Uniqlo product team made a massive mistake somewhere along the lines? I set out to find out… (Spoiler, I think they did)
+          A few weeks ago I was browsing one of my favorite brands' websites, Uniqlo. Without spoiling the rest of this case study, I had a truly horrible UX experience, and thought this would be a great opportunity for me to test my PM skills! This case study sets out to review the usability of the Uniqlo website, and make suggestions on how to improve the experience for users.
         </p>
       </section>
 
@@ -187,7 +181,7 @@ const UniqloCaseStudy: React.FC = () => {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 mt-4 px-6 py-2 bg-tomato/10 text-tomato rounded-lg hover:bg-tomato/20 transition-colors duration-300 font-medium"
               >
-                Epic 1 Product Requirement Document
+                Improve Navigation Usability PRD
                 <FontAwesomeIcon icon={faArrowRight} className="text-sm" />
               </a>
             </div>
@@ -217,7 +211,7 @@ const UniqloCaseStudy: React.FC = () => {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 mt-4 px-6 py-2 bg-tomato/10 text-tomato rounded-lg hover:bg-tomato/20 transition-colors duration-300 font-medium"
               >
-                Epic 2 Product Requirement Document
+                Reduce Checkout Friction PRD
                 <FontAwesomeIcon icon={faArrowRight} className="text-sm" />
               </a>
             </div>
@@ -247,7 +241,7 @@ const UniqloCaseStudy: React.FC = () => {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 mt-4 px-6 py-2 bg-tomato/10 text-tomato rounded-lg hover:bg-tomato/20 transition-colors duration-300 font-medium"
               >
-                Epic 3 Product Requirement Document
+                Personalize Shopping Experience PRD
                 <FontAwesomeIcon icon={faArrowRight} className="text-sm" />
               </a>
             </div>

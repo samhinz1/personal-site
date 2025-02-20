@@ -12,6 +12,7 @@ import Footer from './components/Footer';
 import ArtwoCaseStudy from './pages/ArtwoCaseStudy';
 import UniqloCaseStudy from './pages/UniqloCaseStudy';
 import AudibleCaseStudy from './pages/AudibleCaseStudy';
+import ScrollToTop from './components/ScrollToTop';
 
 const ScrollReveal = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -29,6 +30,7 @@ const ScrollReveal = ({ children }: { children: React.ReactNode }) => {
 const HomePage = () => {
   return (
     <>
+      <Header />
       <ScrollReveal>
         <Hero />
       </ScrollReveal>
@@ -44,6 +46,7 @@ const HomePage = () => {
       <ScrollReveal>
         <SkillsTools />
       </ScrollReveal>
+      <Footer />
     </>
   );
 };
@@ -51,19 +54,11 @@ const HomePage = () => {
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="relative w-full min-h-screen bg-gray-50">
         <MouseHalo />
         <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <Header />
-                <HomePage />
-                <Footer />
-              </>
-            }
-          />
+          <Route path="/" element={<HomePage />} />
           <Route path="/case-study/1" element={<ArtwoCaseStudy />} />
           <Route path="/case-study/2" element={<UniqloCaseStudy />} />
           <Route path="/case-study/3" element={<AudibleCaseStudy />} />

@@ -88,7 +88,7 @@ const ArtwoCaseStudy: React.FC = () => {
       <section className="mb-12">
         <h2 className="text-4xl font-bold mb-6 text-rich-black">MVP Development</h2>
         <p className="text-gray-700 text-lg leading-relaxed">
-          For a bare bones MVP, we identified three critical epics that would provide essential functionality while allowing room for continuous improvements:
+          For a bare bones MVP, I identified three critical epics that would provide essential functionality while allowing room for continuous improvements:
         </p>
 
         <div className="space-y-8 mt-8">

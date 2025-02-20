@@ -208,8 +208,8 @@ const Hero: React.FC = () => {
                             style={{ touchAction: "pan-y" }}
                           >
                             <div className="bg-white rounded-lg shadow-md overflow-hidden cursor-grab active:cursor-grabbing transform-gpu group">
-                              <a
-                                href={`/case-study/${slideIndex + 1}`}
+                              <Link
+                                to={`/case-study/${slideIndex + 1}`}
                                 className="block overflow-hidden rounded-lg"
                               >
                                 <div className="relative h-24 overflow-hidden bg-white flex items-center justify-center">
@@ -246,7 +246,7 @@ const Hero: React.FC = () => {
                                     </span>
                                   </motion.div>
                                 </div>
-                              </a>
+                              </Link>
                             </div>
                           </motion.div>
                         </AnimatePresence>
@@ -353,19 +353,22 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Bouncing down chevron */}
-      <div className="pb-4 sm:pb-8">
+      <div className="pb-4 sm:pb-8 relative z-[1]">
         <motion.div 
-          className="mx-auto text-rich-black cursor-pointer z-50 w-fit"
+          className="mx-auto text-rich-black hover:text-tomato cursor-pointer w-fit transition-colors duration-300"
           animate={{ y: [0, 10, 0] }}
           transition={{ 
             duration: 1.5,
             repeat: Infinity,
             ease: "easeInOut"
           }}
+          whileHover={{ scale: 1.1 }}
           onClick={() => {
-            const nextSection = document.querySelector('#bio');
+            const nextSection = document.getElementById('bio');
             if (nextSection) {
-              nextSection.scrollIntoView({ behavior: 'smooth' });
+              nextSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              // Add offset for header
+              window.scrollBy(0, -100);
             }
           }}
         >

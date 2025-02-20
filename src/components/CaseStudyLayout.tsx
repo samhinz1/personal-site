@@ -78,7 +78,7 @@ const CaseStudyLayout: React.FC<CaseStudyLayoutProps> = ({
           >
             <button
               onClick={() => navigate('/')}
-              className="flex items-center gap-3 mb-8 pt-4 group"
+              className="flex items-center gap-3 mb-8 pt-4 group relative z-50"
             >
               <div className="flex items-center justify-center w-10 h-10 rounded-full bg-dutch-white group-hover:bg-tomato/10 text-rich-black group-hover:text-tomato transition-all duration-300">
                 <FontAwesomeIcon icon={faChevronLeft} />

@@ -17,10 +17,10 @@ const AudibleCaseStudy: React.FC = () => {
       <section className="mb-12">
         <h2 className="text-4xl font-bold mb-6 text-rich-black">Introduction</h2>
         <p className="text-gray-700 text-lg leading-relaxed">
-          Audible has transformed the way we consume books, but the traditional one-narrator-per-book model has limitations. What if listeners could choose their preferred voice for any book, whether it's their favorite actor, a comforting voice they connect with, or a voice that better matches the book's character?
+          It's needless to say that Amazon is one of, if not the greatest examples of consistent innovation in the 21st century. This case study is attempted at creating a new feature that utilises new technologies, and demonstrates how even companies with existing product market fit can continuously innovate to maintain product market fit. 
         </p>
         <p className="text-gray-700 text-lg leading-relaxed mt-4">
-          This case study explores how AI-powered voice synthesis could revolutionize the audiobook experience by allowing listeners to select from a diverse library of high-quality AI narrators, each bringing their unique style and characteristics to the story.
+          This case study explores how AI-powered text-to-speech technology could be introduced as a new feature on Audibles existing platform, allowing existing users access to a new range of narrator voices and languages, while expanding the addressable market to people who otherwise would not use audiobooks.
         </p>
       </section>
 
@@ -103,11 +103,11 @@ const AudibleCaseStudy: React.FC = () => {
       <section className="mb-12">
         <h2 className="text-4xl font-bold mb-6 text-rich-black">The Solution</h2>
         <p className="text-gray-700 text-lg leading-relaxed mb-6">
-          Our solution leverages cutting-edge AI voice synthesis to create a library of high-quality narrators that users can choose from. With recent advances in AI and text-to-speech technologies, narration voices are often indistinguishable from real voice actors. An effective AI narration tool directly addresses key user needs identified in our research such as trying different narrators for their favorite books, differentiation of character voices within a single book, and increasing appeal to cater to audiences that may have different audio/voice preferences such as language, genders, speeds and accents.
+        With recent advances in AI and text-to-speech technologies, narration voices are often indistinguishable from real voice actors. An effective AI narration tool directly addresses key user needs identified in our research such as users wanting access to different narrators, differentiation of character voices within a single book, and increased product market fit for customers who have specific requirements/preferences on narration such as language, speeds and dialects.
         </p>
         
         <p className="text-gray-700 text-lg leading-relaxed">
-          Implementation of this solution is particularly feasible given Amazon's existing technological advantage through Amazon Polly. This in-house text-to-speech technology, with its advanced neural capabilities and established voice library, provides the foundation for rapid development and scalable deployment that is a clear advantage compared to many other services. 
+        Implementation of this solution is particularly feasible given Amazon's existing technological advantage through Amazon Polly. This in-house text-to-speech technology, with its advanced neural capabilities and established voice library, provides the foundation for improved product differentiation and solidifies Audibles product-market fit.  
         </p>
       </section>
 

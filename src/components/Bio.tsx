@@ -172,16 +172,16 @@ const Bio: React.FC = () => {
             </div>
           </div>
           <div className="flex-1">
-            <div>
-              I'm an aspiring <span className="text-tomato font-bold">product manager</span> taking the leap from finance into the world of tech! After years of spectating from the stands (Analysing great companies), I'm ready to get out onto the pitch myself.
+            <div className="text-[17px] text-justify">
+              I've always been fascinated by what makes the truly great companies "great" - the <span className="text-tomato font-bold">'how'</span> and <span className="text-tomato font-bold">'why'</span> behind the most successful products and companies. What made Airbnb dominate? Why was Uber inevitable? But at some point (in the last 12 months), I realized that observing from the sidelines wasn't enough. I don't just want to analyse and study great products in the world of finance; I want my own hands dirty and I want to be apart of that process.
 
               <br /><br />
 
-              My passion lies in understanding the <span className="text-tomato font-bold">"Why"</span> behind what makes a truly great product and company. I thrive in collaborative environments, where teams are <span className="text-tomato font-bold">united </span>by a common goal.
+              I understand that product management isn't just about having ideas — it requires <span className="text-tomato font-bold">structured research</span>, testing hypothesises, critical thinking, a <span className="text-tomato font-bold">deep understanding</span> of the problem at hand and most importantly, <span className="text-tomato font-bold">relentless execution</span>. I believe my ability to <span className="text-tomato font-bold">"wear multiple hats"</span> will be incredibly beneficial for a role as a Product Manager.
 
               <br /><br />  
 
-              I have spent the last 6 months devouring courses, books & podcasts to get myself up to speed so I can hit the ground running. Surprisingly, I have noticed a lot of <span className="text-tomato font-bold">skill overlaps</span> in areas such as hypothesis testing, data-driven decision making and risk management/prioritisation.
+              Over the past six months, I've immersed myself in multiple learning paths to bring myself up to speed both technically, and theoretically. This site is certainly not here to showcase my design or engineering brilliance. Instead, consider it <span className="text-tomato font-bold">proof</span> that I'm serious about this path — that I'm eager to learn, ready to contribute, and capable of critical thinking.
             </div>
           </div>
         </div>
@@ -189,35 +189,35 @@ const Bio: React.FC = () => {
     },
     {
       id: 'whypm',
-      title: 'Why Product?',
+      title: 'Why Product Management?',
       content: (
-        <div className="space-y-4">
-          <div className="text-lg">
-            <h2 className="text-1xl font-bold text-rich-black mb-6">My journey to Product Management has been driven by three key realizations:</h2>
-            
-            <div className="mt-6 space-y-6">
-              <div>
-                <h3 className="text-xl font-semibold text-tomato mb-2">Action over Analysis</h3>
-                <p>
-                  As an investment analyst, I spent years studying what makes great tech companies tick. I've analyzed their products, strategies, and execution. Now, I want to move from being a spectator to an active builder - applying these insights directly to create impactful products.
-                </p>
-              </div>
+        <div className="space-y-6 text-lg">
+          
 
-              <div>
-                <h3 className="text-xl font-semibold text-tomato mb-2">Intersection of Business & Technology</h3>
-                <p>
-                  My background in finance and business gives me a strong foundation in strategic thinking and stakeholder management. Combined with my self-taught technical skills, I can effectively bridge the gap between business goals and technical implementation.
-                </p>
-              </div>
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-xl font-semibold text-tomato mb-2">From Observer to Builder: Creating Real-World Impact</h3>
+              <p className="text-justify">
+                As an investment analyst, I spent years studying what makes great tech companies succeed—analyzing their products, strategies, and execution. But the more I studied, the more I realized I didn't just want to observe. I wanted to build. Product management allows me to take those insights and apply them directly, shaping products that make a tangible impact.
+              </p>
+            </div>
 
-              <div>
-                <h3 className="text-xl font-semibold text-tomato mb-2">User-Centric Problem Solving</h3>
-                <p>
-                  I'm passionate about understanding user needs and translating them into solutions. The opportunity to work at the intersection of users, business, and technology - while driving tangible impact - is what draws me to Product Management.
-                </p>
-              </div>
+            <div>
+              <h3 className="text-xl font-semibold text-tomato mb-2">Solving Meaningful, Challenging Problems</h3>
+              <p className="text-justify">
+                I find deep satisfaction in problem-solving. It's always been a core part of who I am—from competing in chess tournaments as a kid to designing the very website you're reading right now. Product management is a discipline that thrives on tackling complex challenges, and I know that's where I do my best work.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-semibold text-tomato mb-2">The Perfect Intersection of Business & Technology</h3>
+              <p className="text-justify">
+                I've always believed that the ideal career sits at the crossroads of what you're good at and what you love. While a move from finance to product management might seem like a leap, to me, it's a logical transition. I love understanding how businesses work, identifying the problems they solve, and figuring out how to create real value. Product management gives me the opportunity to do exactly that—just from the inside rather than the outside.
+              </p>
             </div>
           </div>
+
+      
         </div>
       )
     },
@@ -225,41 +225,41 @@ const Bio: React.FC = () => {
       id: 'pmskills',
       title: 'PM Skills',
       content: (
-        <div className="space-y-4">
-          <div className="text-lg">
-            <div className=" space-y-6">
-              <div>
-                <h3 className="text-xl font-semibold text-tomato mb-2">Technical Skills</h3>
-                <p>
-                  Through 6 months of intensive self-study, I've built a foundation in technical skills (Python, JS, HTML, CSS, SQL) and PM practices. I've supplemented formal courses with podcasts, books, and community engagement to develop a well-rounded understanding of product management.
-                </p>
-              </div>
+        <div className="space-y-6 text-sm">
+          <div className="mb-2">
+            <h3 className="text-lg font-semibold text-tomato mb-2">Technical Skills</h3>
+            <p className="text-justify">
+              Through 6 months of intensive self-study, I've built a foundation in technical skills (Python, JS, HTML, CSS, SQL) and product management theories. I've supplemented some formal courses with podcasts, books, and personal project to develop a well-rounded understanding of product management.
+            </p>
+          </div>
 
-              <div>
-                <h3 className="text-xl font-semibold text-tomato mb-2">Transferrable Skills</h3>
-                <p>
-                  My business & finance background provides valuable transferable skills including:
-                  <ul className="list-disc ml-6 mt-2">
-                    <li>Data-driven decision making & hypothesis testing</li>
-                    <li>Risk management & prioritization</li>
-                    <li>Strategic thinking & stakeholder management</li>
-                    <li>Deep understanding of successful tech products</li>
-                  </ul>
-                </p>
-              </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <h3 className="text-lg font-semibold text-tomato mb-2">Data-Driven Decision-Making & Hypothesis Testing</h3>
+              <p className="text-justify">
+                As a portfolio manager, I was constantly testing hypotheses—balancing conviction in a trade with the ability to pivot when the data proved otherwise. This same analytical mindset applies to product management, where testing assumptions, analyzing user behavior, and iterating based on real-world feedback is key.
+              </p>
+            </div>
 
-              <div>
-                <h3 className="text-xl font-semibold text-tomato mb-2">Agile Learner</h3>
-                <p>
-                  Although somewhat cliche, I truly believe I am a fast and adaptive learner. I have demonstrated this in the following ways:<br></br>
-                  <ul className="list-disc ml-6 mt-2 space-y-2">
-                    <li>Rapidly acquired technical skills through self-study in web development</li>
-                    <li>Power/early user of AI tools such as Claude, Cursor, Bolt etc.</li>
-                    <li>Quick adoption of various PM tools including Jira, Linear, Notion, and analytics platforms</li>
-                    <li>Thrived under conditions at Suubee that required me to wear many hats</li>
-                  </ul>
-                </p>
-              </div>
+            <div>
+              <h3 className="text-lg font-semibold text-tomato mb-2">Risk Management & Prioritization</h3>
+              <p className="text-justify">
+                In finance, the relationship between risk and reward is fundamental. As a university student, this principle was drilled into me, and as a professional, I lived it daily. In product management, prioritization follows the same logic—faced with thousands of potential features or opportunities, the goal is to focus on the highest-impact bets with the best risk-reward tradeoff.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-semibold text-tomato mb-2">Strategic Thinking & Stakeholder Management</h3>
+              <p className="text-justify">
+                Success in finance requires thinking outside the box and taking calculated risks. The same applies to product management—differentiation comes from creativity and strategic bets, not just following the status quo. Additionally, managing multiple stakeholders, whether investors or internal teams, is critical to driving alignment and execution.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-semibold text-tomato mb-2">Deep Understanding of Successful Tech Products</h3>
+              <p className="text-justify">
+                My experience analyzing businesses has given me a solid understanding of how key metrics—such as customer acquisition, retention, and monetization—impact a company's top and bottom line. This business-first approach to product management helps ensure that features and roadmaps align with broader company goals.
+              </p>
             </div>
           </div>
         </div>
@@ -339,7 +339,7 @@ const Bio: React.FC = () => {
             </CollapsibleItem>
 
             <CollapsibleItem
-              title="Skills"
+              title="Technologies"
               isOpen={openItem === 'skills'}
               onToggle={() => setOpenItem(openItem === 'skills' ? '' : 'skills')}
             >
