@@ -24,16 +24,19 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
   const [showConfetti, setShowConfetti] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
+    setErrorMessage(null);
     
     try {
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
         body: JSON.stringify({
           access_key: '32b1771f-fb52-45a5-a30d-140934a99e34',
@@ -44,10 +47,13 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
         }),
       });
 
+      const data = await response.json();
+      
       if (response.ok) {
         // Show success state and confetti
         setIsSuccess(true);
         setShowConfetti(true);
+        setErrorMessage(null);
         
         // Hide confetti and close modal after 2.5 seconds
         setTimeout(() => {
@@ -58,14 +64,30 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
           setFormData({ name: '', email: '', message: '' });
         }, 2500);
       } else {
-        throw new Error('Failed to submit form');
+        throw new Error(data.message || 'Failed to submit form');
       }
     } catch (error) {
       console.error('Error submitting form:', error);
-      alert('Failed to send message. Please try again later.');
+      let message = 'Failed to send message. Please try again later.';
+      
+      if (error instanceof Error) {
+        if (error.message.includes('access_key')) {
+          message = 'Form submission service is not properly configured. Please contact the site administrator.';
+        } else if (error.message.includes('rate limit')) {
+          message = 'Too many messages sent. Please try again in a few minutes.';
+        }
+      }
+      
+      setErrorMessage(message);
     } finally {
       setIsLoading(false);
     }
+  };
+
+  // Reset error message when modal is closed
+  const handleClose = () => {
+    setErrorMessage(null);
+    onClose();
   };
 
   return (
@@ -100,7 +122,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
             className="fixed inset-0 bg-rich-black/20 backdrop-blur-[2px] z-[100] flex items-center justify-center"
-            onClick={onClose}
+            onClick={handleClose}
           >
             {/* Modal Content */}
             <motion.div
@@ -124,7 +146,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                       <div className="flex justify-between items-start mb-6">
                         <h3 className="text-4xl font-semibold text-tomato">Let's Chat</h3>
                         <button
-                          onClick={onClose}
+                          onClick={handleClose}
                           className="text-rich-black hover:text-tomato transition-colors"
                         >
                           <FontAwesomeIcon icon={faTimes} size="lg" />
@@ -178,6 +200,12 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                             required
                           ></textarea>
                         </div>
+                        
+                        {errorMessage && (
+                          <div className="text-red-500 text-sm mt-2">
+                            {errorMessage}
+                          </div>
+                        )}
                         
                         <motion.button
                           type="submit"

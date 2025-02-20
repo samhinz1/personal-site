@@ -45,7 +45,7 @@ const CaseStudyLayout: React.FC<CaseStudyLayoutProps> = ({
           className="group relative"
           aria-label="Previous case study"
         >
-          <div className="flex items-center justify-center w-12 h-12 rounded-full bg-dutch-white group-hover:bg-tomato/10 text-rich-black group-hover:text-tomato transition-all duration-300 shadow-lg">
+          <div className="flex items-center justify-center w-12 h-12 rounded-full bg-dutch-white group-hover:bg-tomato/10 text-rich-black group-hover:text-tomato transition-all duration-300 shadow-lg md:opacity-100 opacity-60">
             <FontAwesomeIcon icon={faChevronLeft} size="lg" />
           </div>
           <div className="absolute left-full ml-4 top-1/2 -translate-y-1/2 px-4 py-2 bg-rich-black text-dutch-white rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none text-sm">
@@ -59,7 +59,7 @@ const CaseStudyLayout: React.FC<CaseStudyLayoutProps> = ({
           className="group relative"
           aria-label="Next case study"
         >
-          <div className="flex items-center justify-center w-12 h-12 rounded-full bg-dutch-white group-hover:bg-tomato/10 text-rich-black group-hover:text-tomato transition-all duration-300 shadow-lg">
+          <div className="flex items-center justify-center w-12 h-12 rounded-full bg-dutch-white group-hover:bg-tomato/10 text-rich-black group-hover:text-tomato transition-all duration-300 shadow-lg md:opacity-100 opacity-60">
             <FontAwesomeIcon icon={faChevronRight} size="lg" />
           </div>
           <div className="absolute right-full mr-4 top-1/2 -translate-y-1/2 px-4 py-2 bg-rich-black text-dutch-white rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none text-sm">
