@@ -172,16 +172,15 @@ const Bio: React.FC = () => {
             </div>
           </div>
           <div className="flex-1">
-            <div className="text-[17px] text-justify">
-              I've always been fascinated by what makes the truly great companies "great" - the <span className="text-tomato font-bold">'how'</span> and <span className="text-tomato font-bold">'why'</span> behind the most successful products and companies. What made Airbnb dominate? Why was Uber inevitable? But at some point (in the last 12 months), I realized that observing from the sidelines wasn't enough. I don't just want to analyse and study great products in the world of finance; I want my own hands dirty and I want to be apart of that process.
-
-              <br /><br />
+            <div className="text-[17px] text-left md:text-justify">
+            My career has been driven by a singular curiosity: what distinguishes exceptional products from the rest? After years of analyzing some of the world's most successful companies through an investor's lens, I reached an inflection point last year. Simply observing from the sidelines was no longer enough—I wanted to be part of building something great. As President Roosevelt put it, <span className="text-tomato font-bold">"the credit belongs to the man who is actually in the arena"</span>, and what better way to get into the "arena" than product management?
+            <br /><br />
 
               I understand that product management isn't just about having ideas — it requires <span className="text-tomato font-bold">structured research</span>, testing hypothesises, critical thinking, a <span className="text-tomato font-bold">deep understanding</span> of the problem at hand and most importantly, <span className="text-tomato font-bold">relentless execution</span>. I believe my ability to <span className="text-tomato font-bold">"wear multiple hats"</span> will be incredibly beneficial for a role as a Product Manager.
 
               <br /><br />  
 
-              Over the past six months, I've immersed myself in multiple learning paths to bring myself up to speed both technically, and theoretically. This site is certainly not here to showcase my design or engineering brilliance. Instead, consider it <span className="text-tomato font-bold">proof</span> that I'm serious about this path — that I'm eager to learn, ready to contribute, and capable of critical thinking.
+              Over the past six months, I've immersed myself in multiple learning paths to bring myself up to speed in both technical skills, and PM theory. This site is certainly not here to showcase my design or engineering brilliance. Instead, consider it <span className="text-tomato font-bold">proof</span> that I'm serious about this path — that I'm eager to learn, ready to contribute, and capable of bring value to users and businesses alike.
             </div>
           </div>
         </div>
