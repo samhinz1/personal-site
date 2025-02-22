@@ -180,7 +180,7 @@ const Bio: React.FC = () => {
 
               <br /><br />  
 
-              Over the past six months, I've immersed myself in multiple learning paths to bring myself up to speed in both technical skills, and PM theory. This site is certainly not here to showcase my design or engineering brilliance. Instead, consider it <span className="text-tomato font-bold">proof</span> that I'm serious about this path — that I'm eager to learn, ready to contribute, and capable of bring value to users and businesses alike.
+              Over the past six months, I've immersed myself in multiple learning paths to bring myself up to speed in both technical skills, and PM theory. This site is certainly not here to showcase my design or engineering brilliance. Instead, consider it <span className="text-tomato font-bold">proof</span> that I'm serious about this path — that I'm eager to learn, ready to contribute, and capable of realizing value for both users and businesses alike.
             </div>
           </div>
         </div>
@@ -197,7 +197,7 @@ const Bio: React.FC = () => {
             <div>
               <h3 className="text-xl font-semibold text-tomato mb-2">From Observer to Builder: Creating Real-World Impact</h3>
               <p className="text-justify">
-                As an investment analyst, I spent years studying what makes great tech companies succeed—analyzing their products, strategies, and execution. But the more I studied, the more I realized I didn't just want to observe. I wanted to build. Product management allows me to take those insights and apply them directly, shaping products that make a tangible impact.
+                As an investment analyst, I spent years studying what makes great tech companies succeed—analyzing their products, strategies, and execution. But the more I studied, the more I realized I didn't just want to observe. I wanted to build. Product management allows me to take those insights and apply them directly, shaping products that make a tangible impact by solving real-world problems.
               </p>
             </div>
 
