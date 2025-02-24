@@ -173,7 +173,9 @@ const Bio: React.FC = () => {
           </div>
           <div className="flex-1">
             <div className="text-[17px] text-left md:text-justify">
-            My career has been driven by a singular curiosity: what distinguishes exceptional products from the rest? After years of analyzing some of the world's most successful companies through an investor's lens, I reached an inflection point last year. Simply observing from the sidelines was no longer enough—I wanted to be part of building something great. As President Roosevelt put it, <span className="text-tomato font-bold">"the credit belongs to the man who is actually in the arena"</span>, and what better way to get into the "arena" than product management?
+            My career has been driven by a singular curiosity: what distinguishes exceptional products from the rest? After years of analyzing some of the world's most successful 
+            companies through an investor's lens, I reached an inflection point last year. Simply spectating from the sidelines was no longer enough — I wanted to be at the coalface, solving real problems and delivering real value. 
+            And what better way to achieve that than product management?
             <br /><br />
 
               I understand that product management isn't just about having ideas — it requires <span className="text-tomato font-bold">structured research</span>, testing hypothesises, critical thinking, a <span className="text-tomato font-bold">deep understanding</span> of the problem at hand and most importantly, <span className="text-tomato font-bold">relentless execution</span>. I believe my ability to <span className="text-tomato font-bold">"wear multiple hats"</span> will be incredibly beneficial for a role as a Product Manager.
