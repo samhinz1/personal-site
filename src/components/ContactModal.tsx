@@ -2,7 +2,9 @@ import React, { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane, faTimes, faCheckCircle, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import ReactConfetti from 'react-confetti';
+import samPhoto from '../static/samphoto.png';
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -151,6 +153,30 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                         >
                           <FontAwesomeIcon icon={faTimes} size="lg" />
                         </button>
+                      </div>
+
+                      {/* LinkedIn mini-profile */}
+                      <div className="flex items-center p-4 mb-6 bg-white rounded-lg border border-gray-200 shadow-sm">
+                        <div className="w-24 h-24 rounded-full overflow-hidden mr-4">
+                          <img
+                            src={samPhoto}
+                            alt="Sam Hinz"
+                            className="w-full h-full object-cover scale-150"
+                            style={{ objectPosition: '20% 10%' }}
+                          />
+                        </div>
+                        <div className="flex-1">
+                          <p className="text-sm font-semibold text-rich-black">Samuel Hinz</p>
+                          <a
+                            href="https://www.linkedin.com/in/samhinz"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center text-xs text-tomato hover:text-rich-black font-medium mt-1 transition-colors"
+                          >
+                            <FontAwesomeIcon icon={faLinkedin} className="mr-2" />
+                            <span>Let's connect on LinkedIn</span>
+                          </a>
+                        </div>
                       </div>
 
                       <form onSubmit={handleSubmit} className="space-y-4">

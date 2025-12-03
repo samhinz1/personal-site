@@ -5,7 +5,8 @@ import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope, faChevronDown, faArrowRight, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import ContactModal from './ContactModal';
-import artwologogreen from '../static/ArtwoLogoGreen.png';
+import dicelogo from '../static/dicelogo.webp';
+import vintedLogo from '../static/vinted.png';
 import { Link } from 'react-router-dom';
 
 const wrap = (min: number, max: number, v: number) => {
@@ -15,23 +16,29 @@ const wrap = (min: number, max: number, v: number) => {
 
 const caseStudies = [
   {
-    title: "Artwo Case Study",
-    summary: "Complete MVP for a startup idea to power the future humanoid robotics industry",
-    tags: ["MVP Build", "User Research", "Roadmap"],
-    imageUrl: artwologogreen
+    title: "Dice: Fixing the Ticketing Experience",
+    summary:
+      "Product deep-dive into how Dice can own the full fan journey and win the live events war.",
+    tags: ["Product Strategy", "JTBD", "Feature Ideation"],
+    imageUrl: dicelogo,
+    externalUrl: "https://dice-the-ticket-app-tryi-ji7cajv.gamma.site/",
   },
   {
-    title: "Uniqlo Case Study",
-    summary: "Complete assessment of Uniqlo's online shopping experience including navigation and user experience.",
-    tags: ["User Research", "Data Analysis", "UI/UX Design"],
-    imageUrl: "https://cdn.brandfetch.io/idYY8jkUtH/theme/dark/logo.svg?c=1dxbfHSJFAPEGdCLU4o5B"
+    title: "Vinted: Second-Hand Fashion Flywheel",
+    summary:
+      "How Vinted became Europe’s second-hand fashion powerhouse by eliminating seller friction and building a movement.",
+    tags: ["Marketplace Strategy", "JTBD", "Growth Loops"],
+    imageUrl: vintedLogo,
+    externalUrl: "https://how-vinted-became-europe-qli8r25.gamma.site/",
   },
   {
     title: "Audible Case Study",
-    summary: "New AI feature to combine AI text-to-speech technology with audiobooks, giving listeners the freedom to choose their perfect narrator.",
+    summary:
+      "New AI feature to combine AI text-to-speech technology with audiobooks, giving listeners the freedom to choose their perfect narrator.",
     tags: ["Feature Request", "User Research", "AI Technology"],
-    imageUrl: "https://cdn.brandfetch.io/idT82q9yNb/theme/dark/logo.svg?c=1dxbfHSJFAPEGdCLU4o5B"
-  }
+    imageUrl:
+      "https://cdn.brandfetch.io/idT82q9yNb/theme/dark/logo.svg?c=1dxbfHSJFAPEGdCLU4o5B",
+  },
 ];
 
 const Hero: React.FC = () => {
@@ -40,10 +47,12 @@ const Hero: React.FC = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [currentStudyIndex, setCurrentStudyIndex] = useState(0);
   const titles = [
-    "an Aspiring Product Manager",
+    "a Product Manager",
     "a Tech Enthusiast",
-    "a Problem Solver",
-    "a Tinkerer"
+    "a Cryptic Crossword Lover",
+    "a Tinkerer",
+    "an AFL Football Fanatic",
+    "a Sci-fi & Fantasy tragic",
   ];
 
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
@@ -208,15 +217,22 @@ const Hero: React.FC = () => {
                             style={{ touchAction: "pan-y" }}
                           >
                             <div className="bg-white rounded-lg shadow-md overflow-hidden cursor-grab active:cursor-grabbing transform-gpu group">
-                              <Link
-                                to={`/case-study/${slideIndex + 1}`}
-                                className="block overflow-hidden rounded-lg"
-                              >
+                              {caseStudies[slideIndex].externalUrl ? (
+                                <a
+                                  href={caseStudies[slideIndex].externalUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="block overflow-hidden rounded-lg"
+                                >
                                 <div className="relative h-24 overflow-hidden bg-white flex items-center justify-center">
                                   <img
                                     src={caseStudies[slideIndex].imageUrl}
                                     alt={caseStudies[slideIndex].title}
-                                    className="w-full h-full object-contain p-4 select-none transform group-hover:scale-105 transition-transform duration-300"
+                                    className={`w-full h-full object-contain select-none transition-transform duration-300 ${
+                                      caseStudies[slideIndex].imageUrl === dicelogo
+                                        ? 'p-0 scale-150'
+                                        : 'p-4 transform group-hover:scale-105'
+                                    }`}
                                     draggable="false"
                                   />
                                 </div>
@@ -246,7 +262,52 @@ const Hero: React.FC = () => {
                                     </span>
                                   </motion.div>
                                 </div>
-                              </Link>
+                              </a>
+                              ) : (
+                                <Link
+                                  to={`/case-study/${slideIndex + 1}`}
+                                  className="block overflow-hidden rounded-lg"
+                                >
+                                  <div className="relative h-24 overflow-hidden bg-white flex items-center justify-center">
+                                    <img
+                                      src={caseStudies[slideIndex].imageUrl}
+                                      alt={caseStudies[slideIndex].title}
+                                      className={`w-full h-full object-contain select-none transition-transform duration-300 ${
+                                        caseStudies[slideIndex].imageUrl === dicelogo
+                                          ? 'p-0 scale-150'
+                                          : 'p-4 transform group-hover:scale-105'
+                                      }`}
+                                      draggable="false"
+                                    />
+                                  </div>
+                                  <div className="p-4 select-none">
+                                    <h3 className="text-lg font-bold mb-2 text-rich-black">
+                                      {caseStudies[slideIndex].title}
+                                    </h3>
+                                    <p className="text-sm text-gray-600 mb-3">
+                                      {caseStudies[slideIndex].summary}
+                                    </p>
+                                    <div className="flex flex-wrap justify-center gap-1 mb-2">
+                                      {caseStudies[slideIndex].tags.map((tag, tagIndex) => (
+                                        <span
+                                          key={tagIndex}
+                                          className="px-1.5 py-0.5 bg-tomato/10 text-tomato rounded-full text-[10px] font-medium whitespace-nowrap"
+                                        >
+                                          {tag}
+                                        </span>
+                                      ))}
+                                    </div>
+                                    <motion.div whileHover={{ x: 5 }}>
+                                      <span
+                                        className="inline-flex items-center text-sm text-tomato hover:text-rich-black transition-colors font-semibold"
+                                      >
+                                        Read More
+                                        <FontAwesomeIcon icon={faArrowRight} className="ml-2" />
+                                      </span>
+                                    </motion.div>
+                                  </div>
+                                </Link>
+                              )}
                             </div>
                           </motion.div>
                         </AnimatePresence>
@@ -296,15 +357,20 @@ const Hero: React.FC = () => {
                         whileHover={{ y: -5 }}
                         className="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 group"
                       >
-                        <Link
-                          to={`/case-study/${index + 1}`}
-                          className="block overflow-hidden rounded-lg"
-                        >
+                        {study.externalUrl ? (
+                          <a
+                            href={study.externalUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block overflow-hidden rounded-lg"
+                          >
                           <div className="relative h-24 overflow-hidden bg-white flex items-center justify-center">
                             <img
                               src={study.imageUrl}
                               alt={study.title}
-                              className="w-full h-full object-contain p-4 transform group-hover:scale-105 transition-transform duration-300"
+                              className={`w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-300 ${
+                                study.imageUrl === dicelogo ? 'p-1' : 'p-4'
+                              }`}
                             />
                           </div>
                           <div className="p-3">
@@ -329,7 +395,45 @@ const Hero: React.FC = () => {
                               </span>
                             </motion.div>
                           </div>
-                        </Link>
+                        </a>
+                        ) : (
+                          <Link
+                            to={`/case-study/${index + 1}`}
+                            className="block overflow-hidden rounded-lg"
+                          >
+                            <div className="relative h-24 overflow-hidden bg-white flex items-center justify-center">
+                              <img
+                                src={study.imageUrl}
+                                alt={study.title}
+                                className={`w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-300 ${
+                                  study.imageUrl === dicelogo ? 'p-1' : 'p-4'
+                                }`}
+                              />
+                            </div>
+                            <div className="p-3">
+                              <h3 className="text-base font-bold mb-1 text-rich-black">{study.title}</h3>
+                              <p className="text-xs text-gray-600 mb-2">{study.summary}</p>
+                              <div className="flex flex-wrap justify-center gap-1 mb-2">
+                                {study.tags.map((tag, tagIndex) => (
+                                  <span
+                                    key={tagIndex}
+                                    className="px-1.5 py-0.5 bg-tomato/10 text-tomato rounded-full text-[10px] font-medium whitespace-nowrap"
+                                  >
+                                    {tag}
+                                  </span>
+                                ))}
+                              </div>
+                              <motion.div whileHover={{ x: 5 }}>
+                                <span
+                                  className="inline-flex items-center text-xs text-tomato hover:text-rich-black transition-colors font-semibold"
+                                >
+                                  Read More
+                                  <FontAwesomeIcon icon={faArrowRight} className="ml-2" />
+                                </span>
+                              </motion.div>
+                            </div>
+                          </Link>
+                        )}
                       </motion.div>
                     ))}
                   </div>
@@ -350,30 +454,6 @@ const Hero: React.FC = () => {
            className="text-rich-black hover:text-tomato transition-colors">
           <FontAwesomeIcon icon={faEnvelope} size="2x" />
         </a>
-      </div>
-
-      {/* Bouncing down chevron */}
-      <div className="pb-4 sm:pb-8 relative z-[1]">
-        <motion.div 
-          className="mx-auto text-rich-black hover:text-tomato cursor-pointer w-fit transition-colors duration-300"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ 
-            duration: 1.5,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          whileHover={{ scale: 1.1 }}
-          onClick={() => {
-            const nextSection = document.getElementById('bio');
-            if (nextSection) {
-              nextSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-              // Add offset for header
-              window.scrollBy(0, -100);
-            }
-          }}
-        >
-          <FontAwesomeIcon icon={faChevronDown} size="2x" className="block" />
-        </motion.div>
       </div>
 
       {/* Contact Modal */}

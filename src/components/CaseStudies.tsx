@@ -3,22 +3,27 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import artwologogreen from '../static/ArtwoLogoGreen.png';
+import dicelogo from '../static/dicelogo.webp';
+import vintedLogo from '../static/vinted.png';
 
 const caseStudies = [
   {
     id: 1,
-    title: "Artwo Case Study",
-    summary: "Complete MVP for a startup idea to power the future humanoid robotics industry",
-    tags: ["MVP Build", "User Research", "Roadmap"],
-    imageUrl: artwologogreen
+    title: "Dice: Fixing the Ticketing Experience",
+    summary:
+      "Product deep-dive into how Dice can own the full fan journey and win the live events war.",
+    tags: ["Product Strategy", "JTBD", "Feature Ideation"],
+    imageUrl: dicelogo,
+    externalUrl: "https://dice-the-ticket-app-tryi-ji7cajv.gamma.site/",
   },
   {
     id: 2,
-    title: "Uniqlo Case Study",
-    summary: "Complete assessment of Uniqlo's online shopping experience including navigation and user experience.",
-    tags: ["User Research", "Data Analysis", "UI/UX Design"],
-    imageUrl: "https://cdn.brandfetch.io/idYY8jkUtH/theme/dark/logo.svg?c=1dxbfHSJFAPEGdCLU4o5B"
+    title: "Vinted: Second-Hand Fashion Flywheel",
+    summary:
+      "Deep dive into how Vinted prioritized sellers, removed friction, and turned a marketplace into a movement.",
+    tags: ["Marketplace Strategy", "JTBD", "Growth Loops"],
+    imageUrl: vintedLogo,
+    externalUrl: "https://how-vinted-became-europe-qli8r25.gamma.site/",
   },
   {
     id: 3,
@@ -52,15 +57,22 @@ const CaseStudies: React.FC = () => {
                 whileHover={{ y: -5 }}
                 className="group bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300"
               >
-                <Link
-                  to={`/case-study/${study.id}`}
-                  className="block h-full"
-                >
+                {study.externalUrl ? (
+                  <a
+                    href={study.externalUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block h-full"
+                  >
                   <div className="relative h-48 overflow-hidden bg-white flex items-center justify-center">
                     <img
                       src={study.imageUrl}
                       alt={study.title}
-                      className="w-full h-full object-contain p-4 transform group-hover:scale-105 transition-transform duration-300"
+                      className={`w-full h-full object-contain transition-transform duration-300 ${
+                        study.imageUrl === dicelogo
+                          ? 'p-0 scale-150'
+                          : 'p-4 transform group-hover:scale-105'
+                      }`}
                     />
                   </div>
                   <div className="p-6">
@@ -81,7 +93,43 @@ const CaseStudies: React.FC = () => {
                       <FontAwesomeIcon icon={faArrowRight} className="ml-2" />
                     </motion.div>
                   </div>
-                </Link>
+                </a>
+                ) : (
+                  <Link
+                    to={`/case-study/${study.id}`}
+                    className="block h-full"
+                  >
+                    <div className="relative h-48 overflow-hidden bg-white flex items-center justify-center">
+                      <img
+                        src={study.imageUrl}
+                        alt={study.title}
+                        className={`w-full h-full object-contain transition-transform duration-300 ${
+                          study.imageUrl === dicelogo
+                            ? 'p-0 scale-150'
+                            : 'p-4 transform group-hover:scale-105'
+                        }`}
+                      />
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-2xl font-bold mb-3 text-rich-black">{study.title}</h3>
+                      <p className="text-gray-600 mb-4 leading-relaxed">{study.summary}</p>
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {study.tags.map((tag, tagIndex) => (
+                          <span
+                            key={tagIndex}
+                            className="px-3 py-1 bg-tomato/10 text-tomato rounded-full text-sm font-medium"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                      <motion.div whileHover={{ x: 5 }} className="text-tomato hover:text-rich-black transition-colors font-semibold inline-flex items-center">
+                        Read Case Study
+                        <FontAwesomeIcon icon={faArrowRight} className="ml-2" />
+                      </motion.div>
+                    </div>
+                  </Link>
+                )}
               </motion.div>
             ))}
           </div>

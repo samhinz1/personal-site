@@ -8,7 +8,7 @@ const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-rich-black text-dutch-white py-12 relative z-[60]">
+    <footer id="footer" className="bg-rich-black text-dutch-white py-12 relative z-[60]">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="flex justify-between">
@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
             <div className="space-y-4">
               <h3 className="text-2xl font-bold">Sam Hinz</h3>
               <p className="text-dutch-white/80">
-                Aspiring Product Manager 
+                Product Manager 
               </p>
             </div>
 

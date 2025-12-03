@@ -1,12 +1,7 @@
 import React, { useEffect } from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import Header from './components/Header';
 import Hero from './components/Hero';
-import Bio from './components/Bio';
-import SkillsTools from './components/SkillsTools';
-import Timeline from './components/Timeline';
-import CaseStudies from './components/CaseStudies';
 import MouseHalo from './components/MouseHalo';
 import Footer from './components/Footer';
 import ArtwoCaseStudy from './pages/ArtwoCaseStudy';
@@ -30,21 +25,8 @@ const ScrollReveal = ({ children }: { children: React.ReactNode }) => {
 const HomePage = () => {
   return (
     <>
-      <Header />
       <ScrollReveal>
         <Hero />
-      </ScrollReveal>
-      <ScrollReveal>
-        <Bio />
-      </ScrollReveal>
-      <ScrollReveal>
-        <Timeline />
-      </ScrollReveal>
-      <ScrollReveal>
-        <CaseStudies />
-      </ScrollReveal>
-      <ScrollReveal>
-        <SkillsTools />
       </ScrollReveal>
       <Footer />
     </>
