@@ -7,6 +7,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import ContactModal from './ContactModal';
 import dicelogo from '../static/dicelogo.webp';
 import vintedLogo from '../static/vinted.png';
+import autotraderLogo from '../static/Autotrader.png';
 import { Link } from 'react-router-dom';
 
 const wrap = (min: number, max: number, v: number) => {
@@ -32,12 +33,12 @@ const caseStudies = [
     externalUrl: "https://how-vinted-became-europe-qli8r25.gamma.site/",
   },
   {
-    title: "Audible Case Study",
+    title: "Autotrader: The Car Marketplace That Owns UK Motors",
     summary:
-      "New AI feature to combine AI text-to-speech technology with audiobooks, giving listeners the freedom to choose their perfect narrator.",
-    tags: ["Feature Request", "User Research", "AI Technology"],
-    imageUrl:
-      "https://cdn.brandfetch.io/idT82q9yNb/theme/dark/logo.svg?c=1dxbfHSJFAPEGdCLU4o5B",
+      "How Autotrader can move from search marketplace to market maker by owning the full car-buying journey end-to-end.",
+    tags: ["Marketplace Strategy", "JTBD", "Product Opportunity"],
+    imageUrl: autotraderLogo,
+    externalUrl: "https://autotrader-the-car-marke-9zj82eh.gamma.site/",
   },
 ];
 

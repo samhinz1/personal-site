@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import dicelogo from '../static/dicelogo.webp';
 import vintedLogo from '../static/vinted.png';
+import autotraderLogo from '../static/Autotrader.png';
 
 const caseStudies = [
   {
@@ -27,10 +28,12 @@ const caseStudies = [
   },
   {
     id: 3,
-    title: "Audible Case Study",
-    summary: "New AI feature to combine AI text-to-speech technology with audiobooks, giving listeners the freedom to choose their perfect narrator.",
-    tags: ["Feature Request", "User Research", "AI Technology"],
-    imageUrl: "https://cdn.brandfetch.io/idT82q9yNb/theme/dark/logo.svg?c=1dxbfHSJFAPEGdCLU4o5B"
+    title: "Autotrader: Owning the Car-Buying Journey",
+    summary:
+      "How Autotrader can evolve from a search marketplace into an end-to-end transaction platform that owns the full car-buying journey.",
+    tags: ["Marketplace Strategy", "JTBD", "Product Opportunity"],
+    imageUrl: autotraderLogo,
+    externalUrl: "https://autotrader-the-car-marke-9zj82eh.gamma.site/"
   }
 ];
 
